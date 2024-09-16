@@ -569,6 +569,8 @@ react-notion-custom/
 4. `lib/types.ts`
    - 프로젝트에서 사용되는 타입 정의들이 모여있는 파일입니다.
    - `ContextedBlock` 등의 주요 타입이 여기서 정의됩니다.
+5. `lib/utils/`
+   - 여러 곳에서 쓰는 함수들은 전부 이 폴더에 모여있습니다.
 
 ### 코드 스타일 및 구조적 특징
 
@@ -590,3 +592,279 @@ react-notion-custom/
    - 특정 파일 내에서만 사용되는 컴포넌트나 함수는 별도의 파일로 분리하지 않고, 해당 파일 내에서 정의하고 사용합니다.
 
 이러한 구조와 규칙들은 프로젝트의 일관성을 유지하고, 다른 개발자들이 쉽게 이해하고 기여할 수 있도록 돕습니다. 또한, 번들 크기를 최적화하고 효율적인 트리 쉐이킹을 가능하게 하는 구조를 지향합니다.
+
+## 6. 새 컴포넌트 작성 가이드
+
+### 개요
+
+react-notion-custom 프로젝트에 새 컴포넌트를 추가할 때는 다음 가이드라인을 따라주세요. 이 가이드라인은 프로젝트의 일관성을 유지하고 개발 프로세스를 표준화하는 데 도움이 됩니다.
+
+### 참고 자료
+
+전체적인 디자인과 HTML 구조는 [svelte-notion-page](https://github.com/cozy-blog/svelte-notion-page/tree/temp/packages/svelte-notion-page) 라이브러리의 컨벤션을 따릅니다. 이 라이브러리는 우리가 만들고자 하는 라이브러리의 Svelte 버전입니다.
+
+### 컴포넌트 작성 규칙
+
+1. 파일 위치: 새 컴포넌트는 `lib/components/` 폴더 아래에 생성합니다.
+2. 파일명: 컴포넌트 이름은 소문자로 작성하고, 띄어쓰기는 대시(-)로 구분합니다. (예: `numbered-list-item.tsx`)
+3. 컴포넌트 구조:
+   - 최상위 요소에는 항상 `notion-block` 클래스를 추가합니다.
+   - 컴포넌트 이름을 딴 `notion-{컴포넌트 이름}` 클래스도 최상위 요소에 추가합니다.
+   - 가능한 한 시맨틱 태그를 사용합니다.
+4. CSS: 모든 스타일은 `lib/index.css`에 정의합니다. 컴포넌트 파일 내부에 스타일을 작성하지 않습니다.
+5. 모든 css 클래스명은 `notion-`으로 시작합니다.
+
+예시:
+
+```jsx
+import React from 'react';
+import type { NumberedListItemArgs } from '../types';
+import { getColorCss } from '../utils/getColorCss';
+import { numberedListItemMarker } from '../utils/listItemMarker';
+import RichText from './base/richtext/RichText';
+
+function NumberedListItem({ props }: { props: NumberedListItemArgs }) {
+  const {
+    numbered_list_item: { rich_text: texts, color }
+  } = props;
+  const { marker, format } = numberedListItemMarker.getMarker(props);
+
+  return (
+    <ol
+      data-notion-marker-format={format}
+      className={`notion-block notion-list-numbered ${getColorCss(color)}`}
+    >
+      <li className="notion-display-contents">
+        <div className="notion-list-numbered-content">
+          <span data-notion-marker-format={format} className="notion-list-marker">{marker}</span>
+          <p>
+            <RichText props={texts} />
+          </p>
+        </div>
+        {/* children will be rendered here */}
+      </li>
+    </ol>
+  );
+}
+
+export default NumberedListItem;
+```
+
+#### Storybook 작성
+
+새 컴포넌트를 추가할 때마다 해당하는 Storybook 예제도 함께 작성해야 합니다.
+
+1. 위치: `story/stories/` 폴더 아래에 컴포넌트 이름과 동일한 폴더를 생성합니다.
+2. 파일 구조:
+   - `index.ts`: 해당 컴포넌트의 스토리를 정의합니다.
+   - `data.json`: 렌더링에 사용할 Notion 페이지 정보를 포함합니다.
+
+예시 (`story/stories/numbered-list-item/index.ts`):
+
+```typescript
+import type { Meta, StoryObj } from "@storybook/react";
+import { NumberedListItem } from "../../../lib/components/numbered-list-item";
+import data from "./data.json";
+
+const meta: Meta<typeof NumberedListItem> = {
+  title: "Notion Blocks/NumberedListItem",
+  component: NumberedListItem,
+  tags: ["autodocs"],
+};
+
+export default meta;
+type Story = StoryObj<typeof NumberedListItem>;
+
+export const Default: Story = {
+  args: {
+    props: data,
+  },
+};
+```
+
+#### 체크리스트
+
+새 컴포넌트를 추가할 때 다음 항목을 확인해주세요:
+
+- [ ] `lib/components/` 폴더에 새 컴포넌트 파일 추가
+- [ ] `lib/components/index.ts`에 새 컴포넌트 export
+- [ ] `lib/index.css`에 필요한 스타일 추가
+- [ ] `story/stories/` 폴더에 해당 컴포넌트의 Storybook 예제 추가
+
+이 가이드를 따라 새 컴포넌트를 추가하면, 프로젝트의 일관성을 유지하고 다른 개발자들이 쉽게 이해하고 사용할 수 있는 컴포넌트를 만들 수 있습니다.
+
+## 7. Notion 데이터 가져오기 가이드
+
+### 개요
+
+react-notion-custom을 사용하기 위해서는 Notion 페이지의 데이터를 가져와야 합니다. 이 가이드에서는 데이터를 가져오는 두 가지 방법에 대해 설명합니다.
+
+### 1. notion-dump 사용하기
+
+[아직 개발되지 않아서 사용불가]
+
+notion-dump는 현재 개발 중이며, 완성되면 Notion 페이지 데이터를 쉽게 추출할 수 있는 도구가 될 예정입니다.
+
+### 2. @cozy-blog/notion-client 사용하기
+
+@cozy-blog/notion-client는 Notion API를 래핑한 라이브러리로, Notion 페이지 데이터를 쉽게 가져올 수 있습니다.
+
+#### 설치
+
+```bash
+npm install @cozy-blog/notion-client
+```
+
+#### 사용 예시
+
+다음은 @cozy-blog/notion-client를 사용하여 Notion 페이지 데이터를 가져오는 TypeScript 스크립트 예시입니다:
+
+```typescript
+import { Client } from "@cozy-blog/notion-client";
+
+async function fetchNotionPage() {
+  // Notion API 키 설정
+  const client = new Client({ auth: "YOUR_NOTION_API_KEY" });
+
+  // 페이지 ID 설정
+  const pageId = "YOUR_PAGE_ID";
+
+  try {
+    // 전체 페이지 정보 가져오기
+    const fullPage = await client.fetchFullPage(pageId);
+
+    // 결과를 콘솔에 출력
+    console.log(JSON.stringify(fullPage, null, 2));
+
+    // 또는 파일로 저장
+    // require('fs').writeFileSync('notion_page_data.json', JSON.stringify(fullPage, null, 2));
+  } catch (error) {
+    console.error("Error fetching Notion page:", error);
+  }
+}
+
+fetchNotionPage();
+```
+
+#### VSCode에서 실행하기
+
+1. VSCode에서 Code Runner 플러그인을 설치합니다.
+2. 위의 스크립트를 `.ts` 파일로 저장합니다.
+3. `YOUR_NOTION_API_KEY`와 `YOUR_PAGE_ID`를 실제 값으로 교체합니다.
+4. 파일을 열고 우측 상단의 실행 버튼(▶️)을 클릭하거나 `Ctrl+Alt+N`(Windows/Linux) 또는 `Control+Option+N`(Mac)을 눌러 스크립트를 실행합니다.
+
+#### 주의사항
+
+- Notion API 키는 보안에 주의하여 관리해야 합니다. 공개 저장소에 업로드하지 마세요.
+- 가져온 데이터는 react-notion-custom 컴포넌트에 직접 전달할 수 있는 형식입니다.
+
+이 방법을 통해 Notion 페이지 데이터를 가져와 react-notion-custom과 함께 사용할 수 있습니다.
+
+## 8. 지원되는 Notion 블록 타입
+
+현재 react-notion-custom에서 지원되는 Notion 블록 타입들의 목록입니다. 이 목록은 지속적으로 업데이트될 예정입니다.
+
+| Block Type               | 지원 여부 | Block Type Enum        | 비고 |
+| ------------------------ | --------- | ---------------------- | ---- |
+| Paragraph                | ❌ No     | `paragraph`            |      |
+| Heading 1                | ❌ No     | `heading_1`            |      |
+| Heading 2                | ❌ No     | `heading_2`            |      |
+| Heading 3                | ❌ No     | `heading_3`            |      |
+| Bulleted List Item       | ❌ No     | `bulleted_list_item`   |      |
+| Numbered List Item       | ❌ No     | `numbered_list_item`   |      |
+| To-do                    | ❌ No     | `to_do`                |      |
+| Toggle                   | ❌ No     | `toggle`               |      |
+| Quote                    | ❌ No     | `quote`                |      |
+| Callout                  | ❌ No     | `callout`              |      |
+| Equation                 | ❌ No     | `equation`             |      |
+| Code                     | ❌ No     | `code`                 |      |
+| Image                    | ❌ No     | `image`                |      |
+| Video                    | ❌ No     | `video`                |      |
+| Bookmark                 | ❌ No     | `bookmark`             |      |
+| Divider                  | ❌ No     | `divider`              |      |
+| Table                    | ❌ No     | `table`                |      |
+| Table Row                | ❌ No     | `table_row`            |      |
+| Column                   | ❌ No     | `column`               |      |
+| Column List              | ❌ No     | `column_list`          |      |
+| Audio                    | ❌ No     | `audio`                |      |
+| Synced Block             | ❌ No     | `synced_block`         |      |
+| Table Of Contents        | ❌ No     | `table_of_contents`    |      |
+| Embed                    | ❌ No     | `embed`                |      |
+| Figma                    | ❌ No     | `figma`                |      |
+| Google Maps              | ❌ No     | `maps`                 |      |
+| Google Drive             | ❌ No     | `drive`                |      |
+| Tweet                    | ❌ No     | `tweet`                |      |
+| PDF                      | ❌ No     | `pdf`                  |      |
+| File                     | ❌ No     | `file`                 |      |
+| Link                     | ❌ No     | `text` (inline)        |      |
+| Page Link                | ❌ No     | `page`                 |      |
+| External Page Link       | ❌ No     | `text` (inline)        |      |
+| Collections              | ❌ No     | -                      |      |
+| Collection View          | ❌ No     | `collection_view`      |      |
+| Collection View Table    | ❌ No     | `collection_view`      |      |
+| Collection View Gallery  | ❌ No     | `collection_view`      |      |
+| Collection View Board    | ❌ No     | `collection_view`      |      |
+| Collection View List     | ❌ No     | `collection_view`      |      |
+| Collection View Calendar | ❌ No     | `collection_view`      |      |
+| Collection View Page     | ❌ No     | `collection_view_page` |      |
+
+현재 모든 블록 타입이 지원되지 않고 있습니다 (❌ No). 이 프로젝트는 개발 초기 단계에 있으며, 향후 업데이트를 통해 점진적으로 더 많은 블록 타입을 지원할 예정입니다.
+
+## 9. 프로젝트 로드맵
+
+react-notion-custom 프로젝트의 향후 개발 계획을 소개합니다. 이 로드맵은 프로젝트의 진행 상황에 따라 변경될 수 있습니다.
+
+### 1단계: 기본 컴포넌트 구현
+
+우선적으로 다음 Notion 블록 타입들에 대한 지원을 구현할 예정입니다:
+
+- Paragraph
+- Heading 1, 2, 3
+- Bulleted List Item
+- Numbered List Item
+- To-do
+- Toggle
+- Quote
+- Callout
+- Image
+- Code
+
+### 2단계: 고급 컴포넌트 구현
+
+기본 컴포넌트 구현 후, 다음 컴포넌트들을 순차적으로 추가할 계획입니다:
+
+- Table
+- Equation
+- Video
+- Bookmark
+- Divider
+- Audio
+- File
+
+### 3단계: 성능 최적화
+
+- 코드 스플리팅 도입
+  - 무거운 모듈(예: 수식 렌더링, 코드 하이라이팅)은 별도로 분리하여 필요시에만 로드
+  - 사용자 경험 개선 및 초기 로딩 시간 단축
+
+### 4단계: 고급 기능 및 사용성 개선
+
+- 컴파운드 컴포넌트 패턴 도입
+  - 각 컴포넌트를 더 유연하고 커스터마이즈하기 쉽게 개선
+  - 사용자가 컴포넌트의 개별 부분을 쉽게 수정하고 확장할 수 있도록 함
+- 테마 시스템 구현
+  - 사용자가 전체적인 스타일을 쉽게 변경할 수 있는 기능 추가
+
+### 5단계: 고급 Notion 기능 지원
+
+- 데이터베이스 뷰 (Table, Gallery, List, Calendar 등)
+- Synced Blocks
+- linked databases
+
+### 지속적인 개선
+
+- 사용자 피드백을 반영한 기존 컴포넌트 개선
+- 새로운 Notion 기능에 대한 지속적인 대응
+- 성능 최적화 및 버그 수정
+
+이 로드맵은 프로젝트의 발전 방향을 제시하지만, 커뮤니티의 요구사항과 피드백에 따라 우선순위가 조정될 수 있습니다. 우리는 사용자들의 의견을 경청하고 프로젝트에 반영하기 위해 노력할 것입니다.
