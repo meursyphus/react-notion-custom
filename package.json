@@ -1,0 +1,32 @@
+{
+  "name": "react-notion-custom-packages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:build": "npm run build --workspace=docs",
+    "docs:dev": "npm run dev --workspace=docs",
+    "cli:build": "npm run build --workspace=notion-dump",
+    "story:build": "npm run build-storybook --workspace=story",
+    "story:start": "npm run storybook --workspace=story",
+    "library:build": "npm run build --workspace=react-notion-custom",
+    "prepare": "husky install",
+    "format": "prettier --write ."
+  },
+  "author": "meuryphus",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,mdx}": [
+      "prettier --write --ignore-unknown"
+    ]
+  }
+}
