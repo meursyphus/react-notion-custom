@@ -504,3 +504,48 @@
 .notion-equation:focus {
   background: var(--select-color-2);
 }
+
+.notion-toggle-h1 {
+  margin-bottom: 2px;
+}
+
+.notion-h1:not(:last-child) {
+  margin-bottom: 2px;
+}
+
+.notion-h1:not(:first-child) {
+  margin-top: 2.025rem;
+}
+
+.notion-h1-content {
+  font-size: 1.875rem;
+}
+.notion-h2:not(:last-child) {
+  margin-bottom: 2px;
+}
+
+.notion-h2:not(:first-child) {
+  margin-top: 1.62rem;
+}
+.notion-h2-content {
+  font-size: 1.5rem;
+}
+.notion-h3:not(:last-child) {
+  margin-bottom: 2px;
+}
+.notion-h3:not(:first-child) {
+  margin-top: 1.25rem;
+}
+.notion-h3-content {
+  font-size: 1.25rem;
+}
+
+.notion-paragraph {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.notion-paragraph-content {
+  padding: 3px 2px;
+}
