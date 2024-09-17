@@ -1,36 +1,22 @@
 # Contributing Guide
 
-- [react-notion-custom 기여 방법](./packages/react-notion-custom/CONTRIBUTING-KR.md)
-- [notion-dump 기여 방법](./packages/notion-dump/CONTRIBUTING-KR.md)
-- [문서 기여 방법](./packages/docs/CONTRIBUTING-KR.md)
-
 ## 목차
 
 1. 소개
-
    - 1.1 프로젝트 개요
    - 1.2 우리 프로젝트의 특별한 점
    - 1.3 프로젝트 구조
-
 2. 기여 가이드라인
-
-   - 2.1 PR 승인 프로세스
-   - 2.2 메인테이너와 컨트리뷰터의 역할
-   - 2.3 이슈 및 PR 관리
-
-3. 개발 환경
-
-   - 3.1 PreviewJS 설정 방법
-
+   - 2.1 기여 프로세스
+   - 2.2 PR 승인 프로세스
+   - 2.3 메인테이너와 컨트리뷰터의 역할
+   - 2.4 이슈 및 PR 관리
+3. 개발 환경 및 가이드라인
+   - 3.1 개발 환경 설정
+   - 3.2 PreviewJS 설정 방법
+   - 3.3 컴포넌트 개발 가이드라인
 4. 프로젝트 로드맵
-
-   - react-notion-custom 라이브러리 개발 및 배포
-   - notion-dump CLI 도구 개발 및 배포
-   - docs 프로젝트 개발
-
 5. 프로젝트 구조 설명
-   - 5.1 react-notion-custom과 notion-dump의 역할
-   - 5.2 프로세스 도식화
 
 ## 1. 소개
 
@@ -80,30 +66,65 @@ npm install
 
 ## 2. 기여 가이드라인
 
-### PR 승인 프로세스
+### 2.1 기여 프로세스
+
+1. 프로젝트를 Fork합니다.
+2. 로컬에 Clone합니다: `git clone https://github.com/YOUR_USERNAME/react-notion-custom.git`
+3. 의존성을 설치합니다: `npm install`
+4. 새로운 브랜치를 생성합니다: `git checkout -b feature/your-feature-name`
+   - 브랜치 이름은 `feature/`, `fix/`, `docs/` 등으로 시작하고 간단한 설명을 추가합니다.
+5. 변경사항을 커밋합니다: `git commit -m "Add some feature"`
+6. Fork한 저장소에 Push합니다: `git push origin feature/your-feature-name`
+7. Pull Request를 생성합니다.
+
+PR 제목에 `[DRAFT]`를 추가하면 작업 중 중간 검토나 리뷰를 요청할 수 있습니다.
+
+### 2.2 PR 승인 프로세스
 
 모든 Pull Request는 프로젝트 메인테이너 Moon-DaeSeung의 승인이 필요합니다.
 PR은 모두 영어로 작성해주시요.
 
-### 메인테이너와 컨트리뷰터의 역할
+### 2.3 메인테이너와 컨트리뷰터의 역할
 
 - 메인테이너: 프로젝트의 방향성을 결정하고 코드 리뷰를 담당합니다.
 - 컨트리뷰터: 버그 수정, 새로운 기능 제안 및 구현, 문서 개선 등에 참여할 수 있습니다.
 
-### 이슈 및 PR 관리
+### 2.4 이슈 및 PR 관리
 
 - 메인테이너와 컨트리뷰터 모두 자유롭게 이슈를 생성하고 해결할 수 있습니다.
 - 메인테이너는 기능별로 브랜치를 분리하여 PR을 요청해야 합니다.
 - main 브랜치에 직접 push하는 것은 금지됩니다.
 
-## 3. 개발 환경
+## 3. 개발 환경 및 가이드라인
 
-우리는 PreviewJS와 VSCode를 활용하여 개발을 진행합니다. 이를 통해 각 컴포넌트를 브라우저에서 실시간으로 확인하면서 작업할 수 있습니다.
+### 3.1 개발 환경 설정
 
-PreviewJS 설정 방법:
+1. Node.js와 npm이 설치되어 있는지 확인합니다.
+2. 프로젝트를 클론한 후, 루트 디렉토리에서 `npm install`을 실행하여 모든 의존성을 설치합니다.
 
-1. VSCode에서 PreviewJS 확장 프로그램을 설치합니다.
-2. 프로젝트를 열고 컴포넌트 파일에서 우클릭 후 "Open Preview" 옵션을 선택합니다.
+### 3.2 PreviewJS 설정 방법
+
+PreviewJS를 사용하면 에디터 내에서 직접 스토리북을 보면서 개발할 수 있어 매우 편리합니다.
+
+1. VSCode에서 [PreviewJS](https://previewjs.com/) 확장 프로그램을 설치합니다.
+2. 프로젝트를 열고 각 스토리 코드에서 "Open Preview"를 선택합니다.
+
+### 3.3 컴포넌트 개발 가이드라인
+
+react-notion-custom 컴포넌트를 개발할 때는 다음 가이드라인을 따라주세요:
+
+1. Storybook을 활용한 개발:
+
+   - 각 컴포넌트에 대한 스토리를 작성하고, 스토리북을 통해 다양한 상태와 props를 테스트합니다.
+   - 루트 디렉토리에서 `npm run story:start`로 스토리북을 실행할 수 있습니다.
+
+2. PreviewJS 활용:
+
+   - VSCode에서 PreviewJS를 사용하면 에디터 내에서 직접 스토리북을 보면서 개발할 수 있어 매우 효율적입니다.
+
+3. 컴포넌트 네이밍 및 구조:
+   - 컴포넌트 이름은 PascalCase로 작성합니다.
+   - 각 컴포넌트 파일명과 폴더명은 소문자로 작성합니다. 띄어쓰기는 대시(-)로 표시합니다.
 
 ## 4. 프로젝트 로드맵
 
@@ -166,3 +187,16 @@ PreviewJS 설정 방법:
 ```
 
 이 프로세스를 통해 사용자는 Notion 페이지의 내용을 그대로 가져와 React 애플리케이션에서 렌더링할 수 있으며, 필요에 따라 스타일과 기능을 커스터마이징할 수 있습니다.
+
+---
+
+각 하위 프로젝트별 기여 가이드:
+
+- [react-notion-custom 기여 방법](./packages/react-notion-custom/CONTRIBUTING-KR.md)
+  - React 컴포넌트 개발, Notion API 통합, 성능 최적화 등
+- [notion-dump 기여 방법](./packages/notion-dump/CONTRIBUTING-KR.md)
+  - CLI 도구 개발, Notion 데이터 추출 및 변환 로직 개선 등
+- [문서 기여 방법](./packages/docs/CONTRIBUTING-KR.md)
+  - 문서 작성, 예제 코드 개선, 다국어 지원 등
+
+각 프로젝트에 대한 자세한 기여 방법은 해당 링크를 참조해 주세요.

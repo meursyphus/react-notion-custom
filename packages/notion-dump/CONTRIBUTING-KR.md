@@ -1,5 +1,7 @@
 # notion-dump 사용 가이드 및 기여 안내
 
+[프로젝트 전체 기여 가이드 참고](../../CONTRIBUTING-KR.md)
+
 ## 목차
 
 1. 개요

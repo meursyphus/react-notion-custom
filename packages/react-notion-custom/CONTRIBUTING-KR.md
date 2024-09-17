@@ -1,5 +1,7 @@
 # react-notion-custom 기여 안내
 
+[프로젝트 전체 기여 가이드 참고](../../CONTRIBUTING-KR.md)
+
 ## 목차
 
 1. 프로젝트 개요 및 기여 안내
