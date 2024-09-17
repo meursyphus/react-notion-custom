@@ -3,12 +3,11 @@ import type { ParagraphArgs } from "../types";
 import { getColorCss } from "../utils";
 import RichText from "./internal/rich-text";
 
-interface ParagraphProps {
-  props: ParagraphArgs;
+type ParagraphProps = {
   children?: React.ReactNode;
-}
+} & ParagraphArgs;
 
-const Paragraph: React.FC<ParagraphProps> = ({ props, children }) => {
+const Paragraph: React.FC<ParagraphProps> = ({ children, ...props }) => {
   const {
     paragraph: { color, rich_text: texts },
   } = props;

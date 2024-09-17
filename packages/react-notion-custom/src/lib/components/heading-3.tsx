@@ -3,12 +3,11 @@ import type { Heading_3_Args } from "../types";
 import { getColorCss } from "../utils";
 import RichText from "./internal/rich-text";
 
-interface Heading3Props {
-  props: Heading_3_Args;
+type Heading3Props = {
   children?: React.ReactNode;
-}
+} & Heading_3_Args;
 
-const Heading3: React.FC<Heading3Props> = ({ props, children }) => {
+const Heading3: React.FC<Heading3Props> = ({ children, ...props }) => {
   const {
     heading_3: { color, rich_text: texts, is_toggleable },
   } = props;

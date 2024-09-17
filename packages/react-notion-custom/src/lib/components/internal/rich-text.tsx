@@ -1,5 +1,4 @@
 import React from "react";
-import he from "he";
 import { getColorCss, renderEquation } from "../../utils";
 import type { TextArgs, EquationArgs } from "../../types";
 import { Helmet } from "react-helmet";
@@ -39,7 +38,7 @@ function Text({ props }: { props: TextArgs }) {
     code && "code",
   ].filter(Boolean);
 
-  const renderText = (child: string): React.ReactNode => {
+  const renderText = (source: string): React.ReactNode => {
     return types.reduce(
       (acc, type) => {
         switch (type) {
@@ -63,9 +62,7 @@ function Text({ props }: { props: TextArgs }) {
             return acc;
         }
       },
-      <span className={`${getColorCss(color)} notion-span`}>
-        {he.encode(child)}
-      </span>,
+      <span className={`${getColorCss(color)} notion-span`}>{source}</span>,
     );
   };
 

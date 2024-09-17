@@ -30,7 +30,9 @@ function Title({ title = "" }: { title?: string }) {
   return <h1 className="notion-title">{title}</h1>;
 }
 
-function Cover({ src, alt = "notion cover" }: { src: string; alt?: string }) {
+function Cover({ src, alt = "notion cover" }: { src?: string; alt?: string }) {
+  if (!src) return null;
+
   return (
     <div className="notion-cover">
       <img src={src} alt={alt} />
