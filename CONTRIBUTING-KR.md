@@ -24,6 +24,16 @@ react-notion-custom 프로젝트에 관심을 가져주셔서 감사합니다!
 
 우리의 목표는 Notion의 강력한 콘텐츠 관리 기능과 React의 유연한 UI 구현 능력을 결합하여, 개발자들이 쉽게 Notion 기반의 커스텀 블로그나 웹사이트를 만들 수 있게 하는 것입니다.
 
+```jsx
+<Notion>
+  <Notion.Cover src={content.cover} />
+  <Notion.Body>
+    <Notion.Title title={content.title} />
+    <Notion.Blocks blocks={content.blocks} />
+  </Notion.Body>
+</Notion>
+```
+
 ### 우리 프로젝트의 특별한 점
 
 react-notion-custom은 다음과 같은 특징으로 다른 유사 라이브러리들과 차별화됩니다:
@@ -108,6 +118,8 @@ PreviewJS를 사용하면 에디터 내에서 직접 스토리북을 보면서 �
 
 1. VSCode에서 [PreviewJS](https://previewjs.com/) 확장 프로그램을 설치합니다.
 2. 프로젝트를 열고 각 스토리 코드에서 "Open Preview"를 선택합니다.
+
+![previewjs](./previewjs.png)
 
 ### 3.3 컴포넌트 개발 가이드라인
 

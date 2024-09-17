@@ -643,10 +643,10 @@ fetchNotionPage();
 
 | Block Type               | 지원 여부 | Block Type Enum        | 비고 |
 | ------------------------ | --------- | ---------------------- | ---- |
-| Paragraph                | ❌ No     | `paragraph`            |      |
-| Heading 1                | ❌ No     | `heading_1`            |      |
-| Heading 2                | ❌ No     | `heading_2`            |      |
-| Heading 3                | ❌ No     | `heading_3`            |      |
+| Paragraph                | ✅ Yes    | `paragraph`            |      |
+| Heading 1                | ✅ Yes    | `heading_1`            |      |
+| Heading 2                | ✅ Yes    | `heading_2`            |      |
+| Heading 3                | ✅ Yes    | `heading_3`            |      |
 | Bulleted List Item       | ❌ No     | `bulleted_list_item`   |      |
 | Numbered List Item       | ❌ No     | `numbered_list_item`   |      |
 | To-do                    | ❌ No     | `to_do`                |      |
