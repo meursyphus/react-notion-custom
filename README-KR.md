@@ -24,13 +24,30 @@ React-Notion-Custom을 사용하면 Notion의 강력한 콘텐츠 관리 기능�
 1. Notion에서 새 페이지를 만들고 콘텐츠를 작성합니다.
 2. 페이지를 공개로 설정하고 공유 링크를 복사합니다.
 
-### 2. notion-dump로 콘텐츠 추출하기
+### 2. Notion 페이지 ID 가져오기
+
+1. Notion에서 콘텐츠가 작성된 페이지로 이동합니다.
+2. 페이지 오른쪽 상단의 '공유' 버튼을 클릭한 후, '웹에서 공유' 옵션을 활성화하여 페이지를 공개로 설정합니다.
+3. 링크를 복사합니다. URL은 다음과 같은 형식을 가집니다:
+   ```
+   https://www.notion.so/your-page-title-1234567890abcdef12345678
+   ```
+4. URL에서 마지막 부분(예: `1234567890abcdef12345678`)이 바로 페이지 ID입니다.
+
+### 3. Notion Integration Token 발급받기
+
+1. [Notion 개발자 포털](https://www.notion.so/my-integrations)에 접속합니다.
+2. 'New integration' 버튼을 클릭해 새로운 통합을 만듭니다.
+3. 통합의 이름과 권한 범위를 설정한 후 'Submit'을 클릭합니다.
+4. 생성된 통합의 **Internal Integration Token**을 복사하여 저장해 둡니다.
+
+### 4. notion-dump로 콘텐츠 추출하기
 
 ```bash
-npx notion-dump --page-id YOUR_PAGE_ID
+npx notion-dump --page-id YOUR_PAGE_ID --token YOUR_INTEGRATION_TOKEN
 ```
 
-### 3. React 프로젝트 설정하기
+### 5. React 프로젝트 설정하기
 
 ```bash
 npm create vite@latest my-notion-blog -- --template react-ts
@@ -38,7 +55,7 @@ cd my-notion-blog
 npm install react-notion-custom
 ```
 
-### 4. React-Notion-Custom으로 페이지 렌더링하기
+### 6. React-Notion-Custom으로 페이지 렌더링하기
 
 ```jsx
 import { Notion } from "react-notion-custom";
@@ -59,7 +76,7 @@ function HomePage() {
 export default HomePage;
 ```
 
-### 5. 배포하기
+### 7. 배포하기
 
 Next.js 앱을 Vercel이나 Netlify에 배포하여 여러분만의 Notion 블로그를 세상에 공개하세요!
 
@@ -76,7 +93,7 @@ npm install react-notion-custom notion-dump
 ## 🗺 로드맵
 
 1. 다양한 Notion 블록 타입 지원 확대
-2. 코드 스플릿, 데이터 캐싱 등 성능 최적이
+2. 코드 스플릿, 데이터 캐싱 등 성능 최적화
 3. SEO 최적화 도구 통합
 4. 다국어 지원 강화
 

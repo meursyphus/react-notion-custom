@@ -1,5 +1,7 @@
 # notion-dump Usage Guide and Contribution Instructions
 
+[한국어 버전(Korean Version)](./CONTRIBUTING-KR.md)
+
 [Refer to the overall project contribution guide](../../CONTRIBUTING.md)
 
 ## Table of Contents

@@ -26,13 +26,30 @@ With React-Notion-Custom, you can combine Notion's powerful content management c
 1. Create a new page in Notion and write your content.
 2. Set the page to public and copy the share link.
 
-### 2. Extract Content with notion-dump
+### 2. Get Your Notion Page ID
+
+1. Go to your content page in Notion.
+2. Click the 'Share' button in the top right corner and enable the 'Share to web' option to make the page public.
+3. Copy the link. The URL will be in this format:
+   ```
+   https://www.notion.so/your-page-title-1234567890abcdef12345678
+   ```
+4. The last part of the URL (e.g., `1234567890abcdef12345678`) is your page ID.
+
+### 3. Get Your Notion Integration Token
+
+1. Go to the [Notion developer portal](https://www.notion.so/my-integrations).
+2. Click 'New integration' to create a new integration.
+3. Set the integration name and permissions, then click 'Submit'.
+4. Copy and save the **Internal Integration Token** that's generated.
+
+### 4. Extract Content with notion-dump
 
 ```bash
-npx notion-dump --page-id YOUR_PAGE_ID
+npx notion-dump --page-id YOUR_PAGE_ID --token YOUR_INTEGRATION_TOKEN
 ```
 
-### 3. Set Up React Project
+### 5. Set Up React Project
 
 ```bash
 npm create vite@latest my-notion-blog -- --template react-ts
@@ -40,7 +57,7 @@ cd my-notion-blog
 npm install react-notion-custom
 ```
 
-### 4. Render Page with React-Notion-Custom
+### 6. Render Page with React-Notion-Custom
 
 ```jsx
 import { Notion } from "react-notion-custom";
@@ -61,7 +78,7 @@ function HomePage() {
 export default HomePage;
 ```
 
-### 5. Deploy
+### 7. Deploy
 
 Deploy your Next.js app to Vercel or Netlify and share your Notion blog with the world!
 
