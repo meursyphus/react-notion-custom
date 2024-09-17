@@ -28,5 +28,9 @@
     "*.{js,jsx,ts,tsx,md,mdx}": [
       "prettier --write --ignore-unknown"
     ]
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": ">=9"
   }
 }
