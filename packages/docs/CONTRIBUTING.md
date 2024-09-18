@@ -68,7 +68,7 @@
 
 - Frontend: Next.js
 - CSS: TailwindCSS
-- UI Library: Radix UI or Acenti/UI (used as needed)
+- UI Library: Radix UI or Aceternity UI (used as needed)
 - Markdown Rendering: Refer to Next.js official documentation
 
 ## 4. Content Management
