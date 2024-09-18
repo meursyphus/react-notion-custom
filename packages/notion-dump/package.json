@@ -11,5 +11,13 @@
   "devDependencies": {
     "typescript": "^5.5.3",
     "vite": "^5.4.1"
-  }
+  },
+  "bin": {
+    "notion-dump": "./dist/notion-dump.es.js"
+  },
+  "dependencies": {
+    "@cozy-blog/notion-client": "^0.0.22",
+    "commander": "^12.1.0"
+  },
+  "types": "module"
 }
