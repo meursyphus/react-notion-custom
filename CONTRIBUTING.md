@@ -136,7 +136,7 @@ When developing react-notion-custom components, please follow these guidelines:
 
 3. Component Naming and Structure:
    - Write component names in PascalCase.
-   - Write component file names and folder names in lowercase. Use dashes (-) for spaces.
+   - Use kebab-case for component file names and folder names. This means that all words are lowercase and separated by a hyphen (-). e.g) `text-block.tsx`
 
 ## 4. Project Roadmap
 
