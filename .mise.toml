@@ -1,0 +1,20 @@
+# .mise.toml
+# https://mise.jdx.dev/getting-started.html
+
+# About mise:
+# mise is a polyglot development environment manager. It helps you manage and switch between
+# different versions of programming languages, tools, and other development dependencies.
+# mise ensures consistency across different development environments and simplifies
+# the setup process for new contributors.
+
+[tools]
+# The 'tools' section specifies the tools required for your project.
+# By defining versions for each tool, you ensure a consistent development environment.
+
+# Specifies the Node.js version.
+# This setting means the project will use Node.js version 20.x.
+node = "20"
+
+# You can add other tools here as well. For example:
+# python = "3.9"
+# ruby = "3.1"
