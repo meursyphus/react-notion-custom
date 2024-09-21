@@ -549,3 +549,16 @@
 .notion-paragraph-content {
   padding: 3px 2px;
 }
+
+.notion-bulleted-list {
+  list-style-type: disc;
+  padding-left: 1.5em;
+}
+
+.notion-bulleted-list-item {
+  padding: 3px 2px;
+}
+
+.notion-bulleted-list-item-content {
+  display: inline-block;
+}
