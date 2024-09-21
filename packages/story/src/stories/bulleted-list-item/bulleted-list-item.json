@@ -1,0 +1,169 @@
+{
+  "object": "page",
+  "id": "bulleted-list-item-test-page",
+  "created_time": "2023-09-22T00:00:00.000Z",
+  "last_edited_time": "2023-09-22T00:00:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "test-user-id"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "test-user-id"
+  },
+  "cover": null,
+  "icon": null,
+  "parent": {
+    "type": "database_id",
+    "database_id": true
+  },
+  "archived": false,
+  "properties": {
+    "title": {
+      "id": "title_id",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Bulleted List Item Test",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Bulleted List Item Test",
+          "href": null
+        }
+      ]
+    }
+  },
+  "url": "https://www.notion.so/Bulleted-List-Item-Test",
+  "blocks": [
+    {
+      "object": "block",
+      "id": "bulleted-list-item-1",
+      "parent": {
+        "type": "page_id",
+        "page_id": "bulleted-list-item-test-page"
+      },
+      "created_time": "2023-09-22T00:00:00.000Z",
+      "last_edited_time": "2023-09-22T00:00:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "test-user-id"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "test-user-id"
+      },
+      "has_children": false,
+      "archived": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "color": "default",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "This is a bulleted list item",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "This is a bulleted list item",
+            "href": null
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "id": "bulleted-list-item-2",
+      "parent": {
+        "type": "page_id",
+        "page_id": "bulleted-list-item-test-page"
+      },
+      "created_time": "2023-09-22T00:00:00.000Z",
+      "last_edited_time": "2023-09-22T00:00:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "test-user-id"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "test-user-id"
+      },
+      "has_children": false,
+      "archived": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "color": "blue",
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "This is a ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "This is a ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "blue",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "blue"
+            },
+            "plain_text": "blue",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " bulleted list item",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " bulleted list item",
+            "href": null
+          }
+        ]
+      }
+    }
+  ]
+}
