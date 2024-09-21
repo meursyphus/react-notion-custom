@@ -5,6 +5,7 @@ import { Client } from "@cozy-blog/notion-client";
 import { extractPageIdFromUrl } from "./pageIdExtractor";
 import * as path from "path";
 import { fetchAndSavePageData } from "./dumpPage";
+import typia from "typia";
 
 const DEFAULT_OUTPUT_DIR = "content";
 
@@ -23,7 +24,12 @@ program
 
 program.parse(process.argv);
 
-const options = program.opts() as CLIOptions;
+const options = program.opts();
+
+if (!typia.is<CLIOptions>(options)) {
+  console.error("Invalid options", options);
+  process.exit(1);
+}
 
 const pageId = extractPageIdFromUrl(options.page);
 
@@ -35,6 +41,9 @@ const outputDir = path.join(
 
 const client = new Client({ auth: options.auth });
 
+/**
+ * fetch and save page data
+ */
 (async () => {
   try {
     await fetchAndSavePageData({ client, pageId, outputDir });
