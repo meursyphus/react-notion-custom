@@ -1,8 +1,9 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
+import UnpluginTypia from "@ryoppippi/unplugin-typia/vite";
 
 // Library name
-const LIB_NAME = "NotionDump";
+const LIB_NAME = "Notion-Dump";
 
 export default defineConfig({
   build: {
@@ -33,5 +34,5 @@ export default defineConfig({
   // Vite uses the settings from tsconfig.json during both development and build stages.
   // For more complex scenarios, such as adjusting module resolution, TypeScript settings can be refined in vite.config.ts if needed.
 
-  // plugins: [],
+  plugins: [UnpluginTypia()],
 });
