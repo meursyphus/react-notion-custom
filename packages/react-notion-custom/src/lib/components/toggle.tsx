@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useCallback } from "react";
 import type { ToggleArgs } from "../types";
 import { getColorCss } from "../utils";
 import RichText from "./internal/rich-text";
@@ -14,25 +16,26 @@ const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
 
   const [open, setOpen] = useState(false);
 
-  const toggleOpen = () => setOpen(!open);
-
-  const className = `${getColorCss(color)}__background notion-block notion-toggle ${open ? "notion-toggle-open" : ""}`;
+  const toggleOpen = useCallback(() => setOpen((prevOpen) => !prevOpen), []);
 
   return (
-    <section className={`notion-toggle ${className}`}>
-      <div className="notion-toggle-header">
+    <div
+      className={`notion-block notion-toggle  ${getColorCss(color)} ${open ? "notion-toggle-open" : ""}`}
+      aria-expanded={open}
+    >
+      <div className="notion-toggle-content">
         <button onClick={toggleOpen} className="notion-toggle-button">
           <div
             className={`notion-toggle-button-arrow ${open ? "notion-toggle-button-arrow-opened" : ""}`}
           />
         </button>
-        <header className="notion-toggle-header-content">
+        <p>
           <RichText props={texts} />
-        </header>
+        </p>
       </div>
 
-      {open && <article className="notion-toggle-content">{children}</article>}
-    </section>
+      {children}
+    </div>
   );
 };
 

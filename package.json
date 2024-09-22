@@ -25,7 +25,7 @@
     "prettier": "^3.3.3"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx}": [
+    "*.{js,jsx,ts,tsx,md,mdx,css}": [
       "prettier --write --ignore-unknown"
     ]
   }

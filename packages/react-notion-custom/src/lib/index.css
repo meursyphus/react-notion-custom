@@ -67,6 +67,10 @@
   align-items: center;
 }
 
+.notion-toggle-content > p {
+  padding: 3px 2px;
+}
+
 .notion-toggle-button {
   width: 22px;
   height: 24px;
@@ -557,13 +561,4 @@
 .notion-toggle-title {
   display: block;
   width: 100%;
-}
-
-.notion-toggle-header {
-  display: flex;
-  align-items: center;
-}
-
-.notion-toggle-content {
-  padding: 5px 28px;
 }
