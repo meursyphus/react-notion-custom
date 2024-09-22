@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    // https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+    "esbenp.prettier-vscode",
+    // https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+    "dbaeumer.vscode-eslint",
+    // https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
+    "bradlc.vscode-tailwindcss",
+    // https://marketplace.visualstudio.com/items?itemName=zenclabs.previewjs
+    "zenclabs.previewjs",
+    // https://marketplace.visualstudio.com/items?itemName=tamasfe.even-better-toml
+    // for .mise.toml file, reference https://mise.jdx.dev/configuration.html
+    "tamasfe.even-better-toml"
+  ]
+}
