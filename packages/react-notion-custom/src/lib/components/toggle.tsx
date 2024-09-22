@@ -16,20 +16,20 @@ const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
 
   const toggleOpen = () => setOpen(!open);
 
-  const className = `${getColorCss(color)} notion-block notion-toggle ${open ? "notion-toggle-open" : ""}`;
+  const className = `${getColorCss(color)}__background notion-block notion-toggle ${open ? "notion-toggle-open" : ""}`;
 
   return (
-    <section className={className}>
-      <header>
+    <section className={`notion-toggle ${className}`}>
+      <div className="notion-toggle-header">
         <button onClick={toggleOpen} className="notion-toggle-button">
           <div
             className={`notion-toggle-button-arrow ${open ? "notion-toggle-button-arrow-opened" : ""}`}
           />
         </button>
-        <span>
+        <header className="notion-toggle-header-content">
           <RichText props={texts} />
-        </span>
-      </header>
+        </header>
+      </div>
 
       {open && <article className="notion-toggle-content">{children}</article>}
     </section>
