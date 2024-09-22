@@ -112,7 +112,7 @@ PR은 모두 영어로 작성해주시요.
 1. mise 설치:
 
    - mise는 polyglot development environment manager로, 모든 기여자가 동일한 Node.js 버전을 사용하도록 보장합니다.
-   - https://mise.jdx.dev/getting-started.html의 지침에 따라 mise를 설치하세요.
+   - [https://mise.jdx.dev/getting-started.html](https://mise.jdx.dev/getting-started.html)의 지침에 따라 mise를 설치하세요.
 
 2. 프로젝트 clone 및 mise 설정:
 
