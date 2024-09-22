@@ -1,6 +1,6 @@
-# notion-dump Usage Guide and Contribution Instructions
+# notion-dump Usage Guide and Contribution Guidelines
 
-[한국어 버전(Korean Version)](./CONTRIBUTING-KR.md)
+[한국어버전](./CONTRIBUTING-KR.md)
 
 [Refer to the overall project contribution guide](../../CONTRIBUTING.md)
 
@@ -8,144 +8,105 @@
 
 1. Overview
 2. Usage
-3. Development and Testing
-4. Contribution Guide
+3. Notion API Setup
+4. Development and Testing
+5. Contribution Guide
 
-## Overview
+## 1. Overview
 
-notion-dump is a CLI tool that extracts data from Notion pages and saves it to the local file system. This tool internally uses @cozy-blog/notion-client to communicate with the Notion API.
+notion-dump is a CLI tool that extracts data from Notion pages and saves it in JSON format to the local file system. This tool internally uses the @cozy-blog/notion-client library to communicate with the Notion API.
 
-## Publishing to npm
+## 2. Usage
 
-For instructions on how to publish notion-dump to npm and make it executable with npx, refer to [this guide](https://deepgram.com/learn/npx-script). Once published, you can run it with npx as follows:
+### Running Locally
 
-```bash
-npx notion-dump --page-id YOUR_PAGE_ID [--out OUTPUT_DIR] [--dir ROOT_DIR]
-```
+1. Clone the project and navigate to the directory
 
-## Running Locally
-
-If you're developing or want to test locally, follow these steps:
-
-1. Clone the project and navigate to the directory:
    ```bash
-   git clone https://github.com/your-repo/notion-dump.git
-   cd notion-dump
+   git clone https://github.com/meursyphus/react-notion-custom.git
+   cd react-notion-custom
    ```
-2. Install dependencies:
+
+2. Install dependencies
+
    ```bash
+   # Run this in the root directory
    npm install
    ```
-3. Run locally:
+
+3. Build the project
+
    ```bash
-   node cli.js --page-id YOUR_PAGE_ID [--out OUTPUT_DIR] [--dir ROOT_DIR]
-   ```
-4. (Optional) Make it executable:
-   ```bash
-   chmod +x cli.js
-   ```
-   Then you can run it like this:
-   ```bash
-   node ./cli.js --page-id YOUR_PAGE_ID [--out OUTPUT_DIR] [--dir ROOT_DIR]
+   # Run this in the root directory
+   npm run cli:build
    ```
 
-## Development and Testing
+4. Run the script
 
-While developing and testing locally, you can use `npm link` to use it globally:
+   ```bash
+   node ./packages/notion-dump/dist/notion-dump.es.js --page <NotionPageURL> --auth <YourAPIToken>
+   ```
 
-1. Run the following command in the project directory:
+   Alternatively, use npm link to use it as a global command:
+
    ```bash
    npm link
-   ```
-2. Now you can use the `notion-dump` command globally:
-   ```bash
-   notion-dump --page-id YOUR_PAGE_ID
-   ```
-3. When development is complete, unlink:
-   ```bash
+   notion-dump --page <NotionPageURL> --auth <YourAPIToken>
    npm unlink
    ```
-   This way, you can develop and test locally. After testing and verifying changes, you can submit a pull request to contribute to the project.
 
-## Usage Example
+## 3. Notion API Setup
 
-```bash
-npx notion-dump --page-id 123456789abcdef --out ./custom-output --dir ./my-project/public
-```
+1. Obtain a Notion API token
 
-## Command Options
+   - Create a new integration on the Notion developers page
+   - Select the "Read content" permission
+   - Copy the Internal Integration Token
 
-- `--page-id`: (Required) ID of the Notion page to extract
-- `--out`: (Optional) Output directory name. Default is page {title-id}
-- `--dir`: (Optional) Root directory path. Default is set based on NextJS project structure
+2. Connect the integration to a Notion page
 
-## Output Structure
+   - Add the integration in the "Connections" settings of the target page
 
-```
-[ROOT_DIR]/
-└── [page-title_page-id]/
-    ├── index.json
-    └── images/
+3. Get the Notion page URL
+   - Copy the page URL (including query strings is acceptable)
+
+## 4. Development and Testing
+
+- TypeScript compilation: `npm run build`
+- Adding dependencies: Update package.json, then run `npm install`
+
+## 5. Contribution Guide
+
+### 5.1 Currently Developed Features
+
+- CLI script development
+- Page data extraction
+- Basic output directory management
+
+### 5.2 Features Yet to be Developed
+
+- Image processing functionality:
+  Downloads all images and saves them. Changes the image URL in block types to the downloaded local path.
+  ```
+  [ROOT_DIR]/
+  └── [page-title_page-id]/
+     ├── index.json
+     └── images/
         ├── image1.jpg
         ├── image2.png
         └── ...
-```
+  ```
+- Support for Next.js project structure
+- Support for various output formats
+  - Currently only supports single pages. Subpages or databases are not supported.
+- Documentation and example improvements
 
-- `index.json`: Stores page content in JSON format
-- `images/`: Directory storing all image files included in the page
+### 5.3 How to Contribute
 
-## Image Processing
+1. Check issues
+2. Fork and create a branch
+3. Write code and commit
+4. Create a pull request
+5. Code review and merge
 
-- Image files are saved in the `images/` directory.
-- Image filenames are determined based on Notion's caption information, or if not available, in the format of `image1`, `image2`, etc.
-- Image block information in the JSON file is updated with local file paths.
-
-## Handling Duplicate Runs
-
-- If the tool is run multiple times for the same page, existing data is overwritten with new data.
-- For the image folder, unused images are removed and new images are added.
-
-## Contribution Guide
-
-notion-dump is an open-source project, and we welcome community contributions for continuous improvement and development. Here are the main development items currently in progress or in need of contribution:
-
-1. CLI Script Development
-
-   - Implement the `notion-dump` command
-   - Parse and handle command-line arguments
-   - Improve error handling and user feedback
-
-2. Image Processing Feature Development
-
-   - Download images from Notion API
-   - Implement image filename generation logic
-   - Update image path information
-
-3. Output Structure Optimization
-
-   - Generate and structure `index.json` file
-   - Apply directory naming convention using page title and ID
-
-4. NextJS Project Structure Support
-
-   - Set default output path to match NextJS project structure
-
-5. Implement Incremental Update Feature
-
-   - Develop logic to efficiently update only changed content
-
-6. Expand Database Extraction Feature
-
-   - Add feature to extract entire Notion databases
-
-7. Support Various Output Formats
-
-   - Implement conversion to formats other than JSON, such as Markdown and HTML
-
-8. Improve Documentation and Examples
-   - Write user guides and API documentation
-   - Provide example code for various use cases
-
-If you'd like to contribute, please visit the GitHub repository to check issues or suggest new features. Pull requests are always welcome!
-
-Your participation is a great strength in the development of notion-dump. Let's create a better tool together!
+Your participation is crucial to the development of notion-dump. Let's create a better tool together!
