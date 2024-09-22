@@ -109,8 +109,25 @@ Please write all PRs in English.
 
 ### 3.1 Setting Up the Development Environment
 
-1. Ensure Node.js and npm are installed.
-2. After cloning the project, run `npm install` in the root directory to install all dependencies.
+1. Install mise:
+
+   - mise is a polyglot development environment manager that ensures all contributors use the same Node.js version.
+   - Install mise by following the instructions at https://mise.jdx.dev/getting-started.html
+
+2. Clone the project and set up mise:
+
+   - After cloning the project, navigate to the project root directory.
+   - Run `mise install` to install the specified Node.js version.
+
+3. Verify Node.js installation:
+
+   - Run `node -v` to confirm that the correct Node.js version is installed.
+   - The version should match the one specified in the `.mise.toml` file in the project root.
+
+4. Install project dependencies:
+   - Run `npm install` in the root directory to install all dependencies.
+
+Note: Using mise ensures that you're using the exact Node.js version specified for this project, regardless of any other Node.js installations on your system.
 
 ### 3.2 PreviewJS Setup
 
@@ -136,7 +153,7 @@ When developing react-notion-custom components, please follow these guidelines:
 
 3. Component Naming and Structure:
    - Write component names in PascalCase.
-   - Write component file names and folder names in lowercase. Use dashes (-) for spaces.
+   - Use kebab-case for component file names and folder names. This means that all words are lowercase and separated by a hyphen (-). e.g) `text-block.tsx`
 
 ## 4. Project Roadmap
 

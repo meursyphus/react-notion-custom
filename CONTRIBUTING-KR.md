@@ -109,8 +109,25 @@ PR은 모두 영어로 작성해주시요.
 
 ### 3.1 개발 환경 설정
 
-1. Node.js와 npm이 설치되어 있는지 확인합니다.
-2. 프로젝트를 클론한 후, 루트 디렉토리에서 `npm install`을 실행하여 모든 의존성을 설치합니다.
+1. mise 설치:
+
+   - mise는 polyglot development environment manager로, 모든 기여자가 동일한 Node.js 버전을 사용하도록 보장합니다.
+   - [https://mise.jdx.dev/getting-started.html](https://mise.jdx.dev/getting-started.html)의 지침에 따라 mise를 설치하세요.
+
+2. 프로젝트 clone 및 mise 설정:
+
+   - 프로젝트를 clone한 후, 프로젝트 root directory로 이동합니다.
+   - `mise install` 명령을 실행하여 지정된 Node.js 버전을 설치합니다.
+
+3. Node.js 설치 확인:
+
+   - `node -v` 명령을 실행하여 올바른 Node.js 버전이 설치되었는지 확인합니다.
+   - 버전은 프로젝트 root의 `.mise.toml` 파일에 지정된 것과 일치해야 합니다.
+
+4. 프로젝트 dependencies 설치:
+   - Root directory에서 `npm install` 명령을 실행하여 모든 dependencies를 설치합니다.
+
+Note: mise를 사용하면 시스템에 설치된 다른 Node.js 버전에 관계없이 이 프로젝트에 지정된 정확한 Node.js 버전을 사용할 수 있습니다.
 
 ### 3.2 PreviewJS 설정 방법
 
@@ -136,7 +153,7 @@ react-notion-custom 컴포넌트를 개발할 때는 다음 가이드라인을 �
 
 3. 컴포넌트 네이밍 및 구조:
    - 컴포넌트 이름은 PascalCase로 작성합니다.
-   - 각 컴포넌트 파일명과 폴더명은 소문자로 작성합니다. 띄어쓰기는 대시(-)로 표시합니다.
+   - 각 컴포넌트 파일명과 폴더명은 kebab-case를 사용합니다. 즉, 모두 소문자로 작성하고 단어 사이는 하이픈(-)으로 구분합니다. 예: `text-block.tsx`
 
 ## 4. 프로젝트 로드맵
 
