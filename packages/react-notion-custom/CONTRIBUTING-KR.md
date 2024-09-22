@@ -650,7 +650,7 @@ fetchNotionPage();
 | Bulleted List Item       | ❌ No     | `bulleted_list_item`   |      |
 | Numbered List Item       | ❌ No     | `numbered_list_item`   |      |
 | To-do                    | ❌ No     | `to_do`                |      |
-| Toggle                   | ❌ No     | `toggle`               |      |
+| Toggle                   | ✅ Yes    | `toggle`               |      |
 | Quote                    | ❌ No     | `quote`                |      |
 | Callout                  | ❌ No     | `callout`              |      |
 | Equation                 | ❌ No     | `equation`             |      |
@@ -700,7 +700,6 @@ react-notion-custom 프로젝트의 향후 개발 계획을 소개합니다. 이
 - Bulleted List Item
 - Numbered List Item
 - To-do
-- Toggle
 - Quote
 - Callout
 - Image
