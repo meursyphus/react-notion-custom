@@ -63,25 +63,23 @@ export type CodeArgs = {
   };
 } & ContextedBlock;
 
-export type Heading_1_Args = {
-  type: "heading_1";
-  heading_1: HeadingArgs;
-} & ContextedBlock;
+type Heading = "heading_1" | "heading_2" | "heading_3";
 
-export type Heading_2_Args = {
-  type: "heading_2";
-  heading_2: HeadingArgs;
-} & ContextedBlock;
-
-export type Heading_3_Args = {
-  type: "heading_3";
-  heading_3: HeadingArgs;
-} & ContextedBlock;
-
-export type HeadingArgs = {
+type HeadingArgs = {
   is_toggleable: boolean;
   color: string;
   rich_text: TextArgs[];
+};
+type ExpandedHeading = { [K in Heading]: HeadingArgs };
+
+export type HeadingsArgs = {
+  type: Heading;
+} & ExpandedHeading &
+  ContextedBlock;
+
+export type HeadingConfig = {
+  headingTag: "h1" | "h2" | "h3";
+  headingClassName: string;
 };
 
 export type ColumnListArgs = { type: "column_list" } & Block;
