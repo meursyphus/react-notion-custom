@@ -24,3 +24,11 @@ Here is reference: #25
 ## Screenshot
 
 - A screenshot of your created block being rendered in Storybook.
+
+## Review Guide
+
+Reviews are conducted based on priority levels, such as p0, p1, p2, p3, p4, and p5.  
+p0 ~ p2: If the author decides not to reflect a review for p0 to p2, it signals that a proper discussion with the reviewer is  
+necessary. It is expected that the review will be resolved either through incorporating the feedback or through further discussion.  
+p3: indicates that the reviewer has identified a significant issue, but either lacks a clear solution or the comment lacks sufficient context. Further explanation or additional discussion on the reviewer's concerns is needed.
+p4, p5: p4 and p5 suggest low priority, and if the author does not deem them important, these comments can be disregarded.
