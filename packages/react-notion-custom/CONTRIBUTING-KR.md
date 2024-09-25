@@ -651,7 +651,7 @@ fetchNotionPage();
 | Numbered List Item       | ❌ No     | `numbered_list_item`   |      |
 | To-do                    | ❌ No     | `to_do`                |      |
 | Toggle                   | ✅ Yes    | `toggle`               |      |
-| Quote                    | ❌ No     | `quote`                |      |
+| Quote                    | ✅ Yes    | `quote`                |      |
 | Callout                  | ❌ No     | `callout`              |      |
 | Equation                 | ❌ No     | `equation`             |      |
 | Code                     | ❌ No     | `code`                 |      |
