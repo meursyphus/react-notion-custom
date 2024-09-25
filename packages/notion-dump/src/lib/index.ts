@@ -8,11 +8,13 @@ import { fetchAndSavePageData } from "./dumpPage";
 import typia from "typia";
 
 const DEFAULT_OUTPUT_DIR = "content";
+const DEFAULT_IMAGE_OUT_DIR = "public";
 
 interface CLIOptions {
   page: string;
   auth: string;
   outputDir?: string;
+  imageOutDir?: string;
 }
 
 const program = new Command();
@@ -20,7 +22,8 @@ const program = new Command();
 program
   .requiredOption("--page <pageUrl>", "Notion page URL")
   .requiredOption("--auth <authToken>", "Notion API authentication token")
-  .option("--output-dir <dir>", "Output directory", "content");
+  .option("--output-dir <dir>", "Output directory", "content")
+  .option("--image-out-dir <dir>", "Output directory for images", "public");
 
 program.parse(process.argv);
 
@@ -39,6 +42,12 @@ const outputDir = path.join(
   pageId,
 );
 
+const imageOutDir = path.join(
+  process.cwd(),
+  options.imageOutDir || DEFAULT_IMAGE_OUT_DIR,
+  pageId,
+);
+
 const client = new Client({ auth: options.auth });
 
 /**
@@ -46,7 +55,7 @@ const client = new Client({ auth: options.auth });
  */
 (async () => {
   try {
-    await fetchAndSavePageData({ client, pageId, outputDir });
+    await fetchAndSavePageData({ client, pageId, outputDir, imageOutDir });
   } catch (error: any) {
     console.error("Error fetching page data:", error.message);
     process.exit(1);

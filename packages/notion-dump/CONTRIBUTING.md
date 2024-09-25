@@ -44,12 +44,15 @@ notion-dump is a CLI tool that extracts data from Notion pages and saves it in J
 4. Run the script
 
    ```bash
+
    node ./packages/notion-dump/dist/notion-dump.es.js --page <NotionPageURL> --auth <YourAPIToken>
    ```
 
    Alternatively, use npm link to use it as a global command:
 
    ```bash
+   npm run cli:build
+   chmod +x ./packages/notion-dump/dist/notion-dump.es.js
    npm link
    notion-dump --page <NotionPageURL> --auth <YourAPIToken>
    npm unlink
