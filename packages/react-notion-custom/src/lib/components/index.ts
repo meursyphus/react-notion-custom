@@ -4,7 +4,10 @@ import Toggle from "./toggle";
 import Equation from "./equation";
 import Quote from "./quote";
 
-export { Headings, Paragraph, Toggle, Equation, Quote };
+export { Headings, Paragraph, Toggle, Equation, Quote,Callout };
+import Callout from "./callout";
+
+export { Headings, Paragraph, Toggle, Equation, Callout };
 
 export default {
   heading_1: Headings,
@@ -14,4 +17,5 @@ export default {
   toggle: Toggle,
   equation: Equation,
   quote: Quote,
+  callout: Callout,
 };

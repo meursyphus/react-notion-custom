@@ -653,6 +653,7 @@ fetchNotionPage();
 | Toggle                   | ✅ Yes    | `toggle`               |      |
 | Quote                    | ✅ Yes    | `quote`                |      |
 | Callout                  | ❌ No     | `callout`              |      |
+| Callout                  | ✅ Yes    | `callout`              |      |
 | Equation                 | ❌ No     | `equation`             |      |
 | Code                     | ❌ No     | `code`                 |      |
 | Image                    | ❌ No     | `image`                |      |

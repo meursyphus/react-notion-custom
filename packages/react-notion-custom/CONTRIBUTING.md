@@ -655,7 +655,7 @@ Here's a list of Notion block types currently supported in react-notion-custom. 
 | To-do                    | ❌ No          | `to_do`                |      |
 | Toggle                   | ✅ Yes         | `toggle`               |      |
 | Quote                    | ✅ Yes         | `quote`                |      |
-| Callout                  | ❌ No          | `callout`              |      |
+| Callout                  | ✅ Yes         | `callout`              |      |
 | Equation                 | ❌ No          | `equation`             |      |
 | Code                     | ❌ No          | `code`                 |      |
 | Image                    | ❌ No          | `image`                |      |
