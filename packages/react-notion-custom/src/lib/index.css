@@ -625,6 +625,19 @@
   padding-top: 4px;
   padding-bottom: 4px;
   display: flex;
+
+.notion-quote-content {
+  display: block;
+  word-break: break-word;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-left: 3px solid currentcolor;
+}
+.notion-quote {
+  padding: 3px 2px;
+  margin: 3px 0px 3px 1px;
+  font-size: 1em;
+
 .notion-callout {
   padding: 16px 16px 16px 12px;
   display: flex;
