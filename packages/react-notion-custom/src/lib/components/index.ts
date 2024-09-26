@@ -3,8 +3,9 @@ import Paragraph from "./paragraph";
 import Toggle from "./toggle";
 import Equation from "./equation";
 import NumberedListItem from "./numbered-list-item";
+import Callout from "./callout";
 
-export { Headings, Paragraph, Toggle, Equation, NumberedListItem };
+export { Headings, Paragraph, Toggle, Equation, Callout,NumberedListItem };
 
 export default {
   heading_1: Headings,
@@ -14,4 +15,5 @@ export default {
   toggle: Toggle,
   equation: Equation,
   numbered_list_item: NumberedListItem,
+  callout: Callout,
 };

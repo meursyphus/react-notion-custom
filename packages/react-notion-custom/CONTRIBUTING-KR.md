@@ -652,7 +652,7 @@ fetchNotionPage();
 | To-do                    | ❌ No     | `to_do`                |      |
 | Toggle                   | ✅ Yes    | `toggle`               |      |
 | Quote                    | ❌ No     | `quote`                |      |
-| Callout                  | ❌ No     | `callout`              |      |
+| Callout                  | ✅ Yes    | `callout`              |      |
 | Equation                 | ❌ No     | `equation`             |      |
 | Code                     | ❌ No     | `code`                 |      |
 | Image                    | ❌ No     | `image`                |      |
