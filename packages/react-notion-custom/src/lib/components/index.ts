@@ -2,12 +2,13 @@ import Headings from "./headings";
 import Paragraph from "./paragraph";
 import Toggle from "./toggle";
 import Equation from "./equation";
+import NumberedListItem from "./numbered-list-item";
 import Quote from "./quote";
-
-export { Headings, Paragraph, Toggle, Equation, Quote,Callout };
 import Callout from "./callout";
 
-export { Headings, Paragraph, Toggle, Equation, Callout };
+export { Headings, Paragraph, Toggle, Equation, Quote,Callout };
+
+export { Headings, Paragraph, Toggle, Equation, Callout,NumberedListItem };
 
 export default {
   heading_1: Headings,
@@ -16,6 +17,7 @@ export default {
   paragraph: Paragraph,
   toggle: Toggle,
   equation: Equation,
+  numbered_list_item: NumberedListItem,
   quote: Quote,
   callout: Callout,
 };
