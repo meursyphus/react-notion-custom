@@ -659,7 +659,7 @@ Here's a list of Notion block types currently supported in react-notion-custom. 
 | Equation                 | ❌ No          | `equation`             |      |
 | Code                     | ❌ No          | `code`                 |      |
 | Image                    | ❌ No          | `image`                |      |
-| Video                    | ❌ No          | `video`                |      |
+| Video                    | ✅ Yes         | `video`                |      |
 | Bookmark                 | ❌ No          | `bookmark`             |      |
 | Divider                  | ✅ Yes         | `divider`              |      |
 | Table                    | ❌ No          | `table`                |      |

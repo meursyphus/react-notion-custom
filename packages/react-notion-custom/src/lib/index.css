@@ -625,6 +625,7 @@
   padding-top: 4px;
   padding-bottom: 4px;
   display: flex;
+}
 
 .notion-quote-content {
   display: block;
@@ -633,10 +634,12 @@
   padding-right: 14px;
   border-left: 3px solid currentcolor;
 }
+
 .notion-quote {
   padding: 3px 2px;
   margin: 3px 0px 3px 1px;
   font-size: 1em;
+}
 
 .notion-callout {
   padding: 16px 16px 16px 12px;
@@ -698,4 +701,13 @@
 .notion-hr {
   margin: 6px 0px;
   border-top: 1px solid rgba(223, 223, 222, 1);
+}
+
+.notion-video {
+  margin: 4px 0px;
+}
+
+.notion-video-content {
+  display: flex;
+  flex-direction: column;
 }
