@@ -1,6 +1,6 @@
 import React from "react";
 import type { BulletedListItemArgs } from "../types";
-import { getColorCss } from "../utils";
+import { bulletedListItemMarker, getColorCss } from "../utils";
 import RichText from "./internal/rich-text";
 
 type BulletedListItemProps = {
@@ -12,15 +12,27 @@ const BulletedListItem: React.FC<BulletedListItemProps> = ({
   ...props
 }) => {
   const {
-    bulleted_list_item: { color, rich_text: texts },
+    bulleted_list_item: { rich_text: texts, color },
   } = props;
+  const { marker, format } = bulletedListItemMarker.getMarker(props);
 
   return (
-    <ul className={`notion-block notion-bulleted-list ${getColorCss(color)}`}>
-      <li className="notion-bulleted-list-item">
-        <span className="notion-bulleted-list-item-content">
-          <RichText props={texts} />
-        </span>
+    <ul
+      data-notion-marker-format={format}
+      className={`notion-block notion-list-bulleted ${getColorCss(color)}`}
+    >
+      <li className="notion-display-contents">
+        <div className="notion-list-bulleted-content">
+          <span
+            data-notion-marker-format={format}
+            className="notion-list-marker"
+          >
+            {marker}
+          </span>
+          <p>
+            <RichText props={texts} />
+          </p>
+        </div>
         {children}
       </li>
     </ul>
