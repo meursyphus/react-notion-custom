@@ -591,6 +591,53 @@
   background: var(--select-color-2);
 }
 
+.notion-list-numbered {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.notion-list-numbered[data-notion-marker-format="romans"]
+  > .notion-display-contents
+  > .notion-list-numbered-content
+  > .notion-list-marker {
+  width: 3em !important;
+  margin-right: 0em;
+}
+
+.notion-list-numbered[data-notion-marker-format="romans"] > li > .notion-block {
+  margin-left: 2.9em;
+}
+
+.notion-list-marker::after {
+  content: ".";
+}
+
+.notion-list-marker {
+  width: 26px;
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+}
+
+.notion-list-numbered-content {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  display: flex;
+
+.notion-quote-content {
+  display: block;
+  word-break: break-word;
+  padding-left: 14px;
+  padding-right: 14px;
+  border-left: 3px solid currentcolor;
+}
+.notion-quote {
+  padding: 3px 2px;
+  margin: 3px 0px 3px 1px;
+  font-size: 1em;
+
 .notion-callout {
   padding: 16px 16px 16px 12px;
   display: flex;
