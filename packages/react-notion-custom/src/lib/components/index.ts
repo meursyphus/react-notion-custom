@@ -1,15 +1,20 @@
-import Heading1 from "./heading-1";
-import Heading2 from "./heading-2";
-import Heading3 from "./heading-3";
+import Headings from "./headings";
 import Paragraph from "./paragraph";
+import Toggle from "./toggle";
+import Equation from "./equation";
+import Callout from "./callout";
 import BulletedListItem from "./bulleted-list-item";
 
-export { Heading1, Heading2, Heading3, Paragraph, BulletedListItem };
+export { Headings, Paragraph, Toggle, Equation, Callout, BulletedListItem };
+
 
 export default {
-  heading_1: Heading1,
-  heading_2: Heading2,
-  heading_3: Heading3,
+  heading_1: Headings,
+  heading_2: Headings,
+  heading_3: Headings,
   paragraph: Paragraph,
   bulleted_list_item: BulletedListItem,
+  toggle: Toggle,
+  equation: Equation,
+  callout: Callout,
 };
