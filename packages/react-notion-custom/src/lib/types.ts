@@ -174,9 +174,6 @@ export type VideoArgs = {
 
 export type DividerArgs = {
   type: "divider";
-  divider: {
-    //
-  };
 } & ContextedBlock;
 
 export type AudioArgs = {
