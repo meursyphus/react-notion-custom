@@ -193,6 +193,7 @@ export type TableArgs = {
     table_width: number;
     has_column_header: boolean;
     has_row_header: boolean;
+    color: string;
   };
 } & ContextedBlock;
 

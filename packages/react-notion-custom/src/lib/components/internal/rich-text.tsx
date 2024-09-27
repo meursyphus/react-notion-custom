@@ -21,13 +21,21 @@ function RichText({ props }: { props: TextArgs[] }) {
   );
 }
 
-// Text 컴포넌트
 function Text({ props }: { props: TextArgs }) {
   const {
     href,
     text: { content },
-    annotations: { bold, italic, strikethrough, underline, code, color },
+    annotations = {} as TextArgs["annotations"],
   } = props;
+
+  const {
+    bold = false,
+    italic = false,
+    strikethrough = false,
+    underline = false,
+    code = false,
+    color = "default",
+  } = annotations;
 
   const types = [
     !!href && "link",
@@ -62,7 +70,9 @@ function Text({ props }: { props: TextArgs }) {
             return acc;
         }
       },
-      <span className={`${getColorCss(color)} notion-span`}>{source}</span>,
+      <span className={`${getColorCss(color || "default")} notion-span`}>
+        {source}
+      </span>,
     );
   };
 

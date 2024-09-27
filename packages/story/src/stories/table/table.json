@@ -1,0 +1,199 @@
+{
+  "object": "page",
+  "id": "table-example-id",
+  "created_time": "2024-09-28T10:00:00.000Z",
+  "last_edited_time": "2024-09-28T11:00:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "user-id"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "user-id"
+  },
+  "cover": null,
+  "icon": null,
+  "parent": {
+    "type": "page_id",
+    "page_id": "parent-page-id"
+  },
+  "archived": false,
+  "properties": {
+    "title": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "Table Example",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Table Example",
+          "href": null
+        }
+      ]
+    }
+  },
+  "url": "https://www.notion.so/Table-Example",
+  "blocks": [
+    {
+      "object": "block",
+      "id": "table-block-id",
+      "parent": {
+        "type": "page_id",
+        "page_id": "table-example-id"
+      },
+      "created_time": "2024-09-28T10:00:00.000Z",
+      "last_edited_time": "2024-09-28T11:00:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "user-id"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "user-id"
+      },
+      "has_children": true,
+      "archived": false,
+      "type": "table",
+      "table": {
+        "table_width": 1,
+        "column_ratios": [1, 1, 1],
+        "has_column_header": true,
+        "has_row_header": true,
+        "color": "default"
+      },
+      "blocks": [
+        {
+          "object": "block",
+          "id": "table-row-1-id",
+          "type": "table_row",
+          "table_row": {
+            "cells": [
+              [
+                {
+                  "type": "text",
+                  "text": { "content": "Header 1" },
+                  "annotations": { "bold": true }
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "text": { "content": "Header 2" },
+                  "annotations": { "bold": true }
+                }
+              ],
+              [
+                {
+                  "type": "text",
+                  "text": { "content": "Header 3" },
+                  "annotations": { "bold": true }
+                }
+              ]
+            ]
+          }
+        },
+        {
+          "object": "block",
+          "id": "table-row-2-id",
+          "type": "table_row",
+          "table_row": {
+            "cells": [
+              [
+                {
+                  "type": "text",
+                  "text": { "content": "Row 1" },
+                  "annotations": { "bold": true }
+                }
+              ],
+              [{ "type": "text", "text": { "content": "Data 1" } }],
+              [{ "type": "text", "text": { "content": "Data 2" } }]
+            ]
+          }
+        },
+        {
+          "object": "block",
+          "id": "table-row-3-id",
+          "type": "table_row",
+          "table_row": {
+            "cells": [
+              [
+                {
+                  "type": "text",
+                  "text": { "content": "Row 2" },
+                  "annotations": { "bold": true }
+                }
+              ],
+              [{ "type": "text", "text": { "content": "Data 3" } }],
+              [{ "type": "text", "text": { "content": "Data 4" } }]
+            ]
+          }
+        },
+        {
+          "object": "block",
+          "id": "table-row-3-id",
+          "type": "table_row",
+          "table_row": {
+            "cells": [
+              [
+                {
+                  "type": "text",
+                  "text": { "content": "Row 3" },
+                  "annotations": { "bold": true }
+                }
+              ],
+              [{ "type": "text", "text": { "content": "Data 5" } }],
+              [{ "type": "text", "text": { "content": "Data 6" } }]
+            ]
+          }
+        },
+        {
+          "object": "block",
+          "id": "table-row-4-id",
+          "type": "table_row",
+          "table_row": {
+            "cells": [
+              [
+                {
+                  "type": "text",
+                  "text": { "content": "Row 4" },
+                  "annotations": { "bold": true }
+                }
+              ],
+              [{ "type": "text", "text": { "content": "Data 7" } }],
+              [{ "type": "text", "text": { "content": "Data 8" } }]
+            ]
+          }
+        },
+        {
+          "object": "block",
+          "id": "table-row-3-id",
+          "type": "table_row",
+          "table_row": {
+            "cells": [
+              [
+                {
+                  "type": "text",
+                  "text": { "content": "Row 5" },
+                  "annotations": { "bold": true }
+                }
+              ],
+              [{ "type": "text", "text": { "content": "Data 9" } }],
+              [{ "type": "text", "text": { "content": "Data 10" } }]
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
