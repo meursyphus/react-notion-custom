@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { getColorCss, renderEquation } from "../../utils";
 import type { TextArgs, EquationArgs } from "../../types";
 import { Helmet } from "react-helmet";
@@ -14,7 +14,9 @@ function RichText({ props }: { props: TextArgs[] }) {
         text.type === "text" ? (
           <Text key={index} props={text} />
         ) : (
-          <Equation key={index} props={text as unknown as EquationArgs} />
+          <Suspense fallback={<div>Currently Loading 🎏🎃</div>}>
+            <Equation key={index} props={text as unknown as EquationArgs} />
+          </Suspense>
         ),
       )}
     </>
