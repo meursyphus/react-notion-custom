@@ -7,8 +7,20 @@ import Quote from "./quote";
 import Callout from "./callout";
 import BulletedListItem from "./bulleted-list-item";
 import Divider from "./divider";
+import Todo from "./to-do";
 
-export { Headings, Paragraph, Toggle, Equation, Quote, Callout, NumberedListItem, BulletedListItem, Divider  };
+export {
+  Headings,
+  Paragraph,
+  Toggle,
+  Equation,
+  Quote,
+  Callout,
+  NumberedListItem,
+  BulletedListItem,
+  Divider,
+  Todo,
+};
 
 export default {
   heading_1: Headings,
@@ -22,4 +34,5 @@ export default {
   quote: Quote,
   callout: Callout,
   divider: Divider,
+  to_do: Todo,
 };
