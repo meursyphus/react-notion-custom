@@ -625,6 +625,7 @@
   padding-top: 4px;
   padding-bottom: 4px;
   display: flex;
+}
 
 .notion-quote-content {
   display: block;
@@ -637,6 +638,7 @@
   padding: 3px 2px;
   margin: 3px 0px 3px 1px;
   font-size: 1em;
+}
 
 .notion-callout {
   padding: 16px 16px 16px 12px;
@@ -698,4 +700,36 @@
 .notion-hr {
   margin: 6px 0px;
   border-top: 1px solid rgba(223, 223, 222, 1);
+}
+
+.notion-to-do {
+  padding: 3px 2px;
+  margin: 3px 0px 3px 1px;
+}
+
+.notion-to-do-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.notion-to-do-item-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.notion-to-do-checkbox {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.notion-to-do-text {
+  flex: 1;
+}
+
+.notion-to-do-checked {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
