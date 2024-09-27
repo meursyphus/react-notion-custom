@@ -74,7 +74,7 @@
           {
             "type": "text",
             "text": {
-              "content": "Buy groceries",
+              "content": "This is To-do Item 1",
               "link": null
             },
             "annotations": {
@@ -85,7 +85,7 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "Buy groceries",
+            "plain_text": "This is To-do Item 1",
             "href": null
           }
         ],
@@ -119,7 +119,7 @@
           {
             "type": "text",
             "text": {
-              "content": "Finish project report",
+              "content": "This is To-do Item 2",
               "link": null
             },
             "annotations": {
@@ -130,7 +130,7 @@
               "code": false,
               "color": "default"
             },
-            "plain_text": "Finish project report",
+            "plain_text": "This is To-do Item 2",
             "href": null
           }
         ],
