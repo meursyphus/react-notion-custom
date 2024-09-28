@@ -573,6 +573,7 @@
   border-radius: 3px;
   transition: background 20ms ease-in 0s;
 }
+
 .notion-equation-block {
   display: flex;
   flex-direction: column;
@@ -608,11 +609,11 @@
   margin-left: 2.9em;
 }
 
-.notion-list-marker::after {
+.notion-list-numbered .notion-list-marker::after {
   content: ".";
 }
 
-.notion-list-marker {
+.notion-list-numbered .notion-list-marker {
   width: 26px;
   display: inline-flex;
   flex-shrink: 0;
@@ -625,6 +626,7 @@
   padding-top: 4px;
   padding-bottom: 4px;
   display: flex;
+}
 
 .notion-quote-content {
   display: block;
@@ -633,10 +635,12 @@
   padding-right: 14px;
   border-left: 3px solid currentcolor;
 }
+
 .notion-quote {
   padding: 3px 2px;
   margin: 3px 0px 3px 1px;
   font-size: 1em;
+}
 
 .notion-callout {
   padding: 16px 16px 16px 12px;
@@ -683,7 +687,7 @@
   align-items: flex-start;
 }
 
-.notion-list-marker {
+.notion-list-bulleted .notion-list-marker {
   user-select: none;
   width: 24px;
   flex-shrink: 0;
