@@ -703,3 +703,12 @@
   margin: 6px 0px;
   border-top: 1px solid rgba(223, 223, 222, 1);
 }
+
+.notion-video {
+  margin: 4px 0px;
+}
+
+.notion-video-content {
+  display: flex;
+  flex-direction: column;
+}
