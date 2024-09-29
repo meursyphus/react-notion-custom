@@ -58,6 +58,9 @@ async function updateImageOnBlock(
     const tempPath = path.join(imageDir, `${imageName}_temp`);
 
     try {
+      // Increment the counter
+      imageCounter.count++;
+
       // Download image and get Content-Type
       const contentType = await downloadImage({
         url: originalUrl,
@@ -74,9 +77,6 @@ async function updateImageOnBlock(
       // 이미지 URL 업데이트
       const newUrl = `/notion-data/${pageId}/${imageName}${extension}`;
       block.image[imageType].url = newUrl;
-
-      // Increment the counter
-      imageCounter.count++;
 
       console.log(`Image saved: ${finalPath}`);
     } catch (error) {
