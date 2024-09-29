@@ -90,6 +90,7 @@ async function updateImageOnBlock(
       blocks: block.blocks,
       imageDir,
       pageId, // 전달
+      imageCounter,
     });
   }
 }
@@ -98,12 +99,13 @@ export async function updateImageOnBlocks({
   blocks,
   imageDir,
   pageId,
+  imageCounter = { count: 1 },
 }: {
   blocks: any[];
   imageDir: string;
   pageId: string;
+  imageCounter?: { count: number };
 }): Promise<void> {
-  const imageCounter = { count: 1 }; // 이미지 카운터 초기화
   const updatePromises = blocks.map((block) =>
     updateImageOnBlock({ block, imageDir, pageId }, imageCounter),
   );
