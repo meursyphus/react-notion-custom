@@ -1,7 +1,7 @@
 import { Client } from "@cozy-blog/notion-client";
 import * as fs from "fs";
 import * as path from "path";
-import { updateImageUrls } from "./domloadImage";
+import { updateImageOnBlocks } from "./domloadImage";
 
 export async function fetchAndSavePageData({
   client,
@@ -20,16 +20,14 @@ export async function fetchAndSavePageData({
   // Create image directory
   fs.mkdirSync(imageOutDir, { recursive: true });
 
-  // Process and update image URLs
-  const updatePromises = fullPage.blocks.map((block) =>
-    updateImageUrls({ block, imageDir: imageOutDir }),
-  );
-
-  // Wait for all update promises to resolve
-  await Promise.all(updatePromises);
+  await updateImageOnBlocks({
+    blocks: fullPage.blocks,
+    imageDir: imageOutDir,
+    pageId, // pageId 전달
+  });
 
   // Define the output file path
-  const outputFile = path.join(outputDir, "index.json");
+  const outputFile = path.join(outputDir, `${pageId}.json`);
 
   // Create the directory if it doesn't exist
   fs.mkdirSync(outputDir, { recursive: true });

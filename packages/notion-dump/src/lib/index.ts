@@ -7,8 +7,8 @@ import * as path from "path";
 import { fetchAndSavePageData } from "./dumpPage";
 import typia from "typia";
 
-const DEFAULT_OUTPUT_DIR = "content";
-const DEFAULT_IMAGE_OUT_DIR = "public";
+const DEFAULT_OUTPUT_DIR = "notion-data";
+const DEFAULT_IMAGE_OUT_DIR = "public/notion-data";
 
 interface CLIOptions {
   page: string;
@@ -39,7 +39,6 @@ const pageId = extractPageIdFromUrl(options.page);
 const outputDir = path.join(
   process.cwd(),
   options.outputDir || DEFAULT_OUTPUT_DIR,
-  pageId,
 );
 
 const imageOutDir = path.join(

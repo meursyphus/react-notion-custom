@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import * as path from "path";
-import fetch from "node-fetch";
 
 async function downloadImage({
   url,
@@ -40,9 +39,17 @@ function getFileExtension(contentType: string, originalUrl: string): string {
   return ".jpg";
 }
 
-export async function updateImageUrls(
-  { block, imageDir }: { block: any; imageDir: string },
-  imageCounter: { count: number } = { count: 1 },
+async function updateImageOnBlock(
+  {
+    block,
+    imageDir,
+    pageId,
+  }: {
+    block: any;
+    imageDir: string;
+    pageId: string;
+  },
+  imageCounter: { count: number },
 ): Promise<void> {
   if (block.type === "image") {
     const imageType = block.image.type;
@@ -64,9 +71,10 @@ export async function updateImageUrls(
       const finalPath = path.join(imageDir, `${imageName}${extension}`);
       await fs.promises.rename(tempPath, finalPath);
 
-      const newUrl = `/${imageName}${extension}`;
-      // Update the URL in the block
+      // 이미지 URL 업데이트
+      const newUrl = `/notion-data/${pageId}/${imageName}${extension}`;
       block.image[imageType].url = newUrl;
+
       // Increment the counter
       imageCounter.count++;
 
@@ -78,8 +86,27 @@ export async function updateImageUrls(
 
   // Recursively process child blocks
   if (block.blocks) {
-    for (const childBlock of block.blocks) {
-      await updateImageUrls({ block: childBlock, imageDir }, imageCounter);
-    }
+    await updateImageOnBlocks({
+      blocks: block.blocks,
+      imageDir,
+      pageId, // 전달
+    });
   }
+}
+
+export async function updateImageOnBlocks({
+  blocks,
+  imageDir,
+  pageId,
+}: {
+  blocks: any[];
+  imageDir: string;
+  pageId: string;
+}): Promise<void> {
+  const imageCounter = { count: 1 }; // 이미지 카운터 초기화
+  const updatePromises = blocks.map((block) =>
+    updateImageOnBlock({ block, imageDir, pageId }, imageCounter),
+  );
+
+  await Promise.all(updatePromises);
 }

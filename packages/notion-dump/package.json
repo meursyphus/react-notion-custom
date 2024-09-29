@@ -23,8 +23,7 @@
   },
   "dependencies": {
     "@cozy-blog/notion-client": "^0.0.22",
-    "commander": "^12.1.0",
-    "node-fetch": "^3.3.2"
+    "commander": "^12.1.0"
   },
   "types": "module"
 }
