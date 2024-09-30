@@ -718,11 +718,47 @@
   width: 100%;
 }
 
-.notion-to-do-checkbox {
+.notion-to-do-checkbox-wrapper {
+  position: relative;
   width: 16px;
   height: 16px;
   margin-right: 8px;
+}
+
+.notion-to-do-checkbox {
+  position: absolute;
+  opacity: 0;
   cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.notion-to-do-checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border: 2px solid rgba(55, 53, 47, 0.16);
+  border-radius: 3px;
+}
+
+.notion-to-do-checkbox:checked ~ .notion-to-do-checkbox-custom {
+  background-color: rgb(35, 131, 226);
+  border-color: rgb(35, 131, 226);
+}
+
+.notion-to-do-checkbox:checked ~ .notion-to-do-checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .notion-to-do-text {

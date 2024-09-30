@@ -16,14 +16,19 @@ const Todo: React.FC<TodoProps> = ({ children, ...props }) => {
     <div className={`notion-block notion-to-do ${getColorCss(color)}`}>
       <div className="notion-to-do-item">
         <div className="notion-to-do-item-content">
-          <input
-            type="checkbox"
-            checked={checked}
-            readOnly
-            className="notion-to-do-checkbox"
-          />
+          <div className="notion-to-do-checkbox-wrapper">
+            <input
+              type="checkbox"
+              checked={checked}
+              readOnly
+              className="notion-to-do-checkbox"
+            />
+            <span className="notion-to-do-checkbox-custom"></span>
+          </div>
           <div
-            className={`notion-to-do-text ${checked ? "notion-to-do-checked" : ""}`}
+            className={`notion-to-do-text ${
+              checked ? "notion-to-do-checked" : ""
+            }`}
           >
             <RichText props={texts} />
           </div>
