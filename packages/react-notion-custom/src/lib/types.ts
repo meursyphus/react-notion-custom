@@ -1,6 +1,7 @@
 import type {
   GetPageResponse,
   BlockObjectResponse,
+  RichTextItemResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 import type { ContentfulPage } from "@cozy-blog/notion-client";
 
@@ -23,9 +24,7 @@ export type TextArgs = {
   type: "text";
   text: {
     content: string;
-    link?: {
-      url: string;
-    };
+    link?: { url: string } | undefined;
   };
   annotations: {
     bold: boolean;
@@ -36,7 +35,7 @@ export type TextArgs = {
     color: string;
   };
   plain_text: string;
-  href?: string | null;
+  href?: string | undefined;
 };
 
 export type ParagraphArgs = {
@@ -195,12 +194,11 @@ export type TableArgs = {
     has_row_header: boolean;
     color: string;
   };
-} & ContextedBlock;
+  blocks: Block[];
+};
 
 export type TableRowArgs = {
-  table_row: {
-    cells: TextArgs[][];
-  };
+  cells: RichTextItemResponse[][];
 };
 
 export type BookmarkArgs = {

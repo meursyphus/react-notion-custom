@@ -703,37 +703,55 @@
 
 .notion-table {
   width: 100%;
-  overflow-x: auto;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 
 .notion-table-content {
-  border-collapse: collapse;
-  border-spacing: 0;
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--notion-table-border-color);
+  border-radius: 3px;
 }
 
-.notion-table-content th,
-.notion-table-content td {
-  border: 1px solid var(--fg-color-1);
-  padding: 0.5em;
+.notion-table-cell {
+  position: relative;
+  padding: 7px 9px;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--notion-table-cell-color);
+  border-top: 1px solid var(--notion-table-border-color);
+  border-left: 1px solid var(--notion-table-border-color);
+  min-width: 120px;
+  max-width: 240px;
+}
+
+.notion-table-cell:first-child {
+  border-left: none;
+}
+
+.notion-table-row:first-child .notion-table-cell {
+  border-top: none;
 }
 
 .notion-table-content th {
+  background-color: var(--notion-table-header-background);
   font-weight: 600;
+  white-space: nowrap;
   text-align: left;
-  background-color: var(--bg-color-0);
 }
 
-.notion-table-row:nth-child(even) {
-  background-color: var(--bg-color-1);
+/* Add these variables to the existing light and dark theme sections */
+[data-theme="light"] .notion,
+.notion {
+  --notion-table-border-color: rgba(55, 53, 47, 0.09);
+  --notion-table-header-background: rgba(247, 246, 243, 0.5);
+  --notion-table-cell-color: rgb(55, 53, 47);
 }
 
-.notion-table-header-cell {
-  font-weight: 600;
-  text-align: left;
-  border: 1px solid var(--fg-color-1);
-  padding: 0.5em;
-  background-color: var(--bg-color-0);
+[data-theme="dark"] .notion {
+  --notion-table-border-color: rgba(255, 255, 255, 0.13);
+  --notion-table-header-background: rgba(255, 255, 255, 0.04);
+  --notion-table-cell-color: rgba(255, 255, 255, 0.9);
 }

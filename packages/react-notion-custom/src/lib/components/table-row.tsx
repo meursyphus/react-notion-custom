@@ -1,34 +1,51 @@
 import React from "react";
-import type { TableRowArgs, TextArgs } from "../types";
+import type { RichTextItemResponse } from "@notionhq/client/build/src/api-endpoints";
+import type { TextArgs, TableRowArgs } from "../types";
 import RichText from "./internal/rich-text";
 
-type TableRowProps = TableRowArgs;
+type TableRowProps = TableRowArgs & {
+  isHeader?: boolean;
+  hasRowHeader?: boolean;
+};
 
-const TableRow: React.FC<TableRowProps> = ({ table_row }) => {
-  const { cells } = table_row;
+const convertRichTextToTextArgs = (
+  richText: RichTextItemResponse,
+): TextArgs => {
+  if (richText.type !== "text") {
+    throw new Error("Unsupported rich text type");
+  }
+
+  return {
+    type: "text",
+    text: {
+      content: richText.text.content,
+      link: richText.text.link ? { url: richText.text.link.url } : undefined,
+    },
+    annotations: richText.annotations,
+    plain_text: richText.plain_text,
+    href: richText.href || undefined,
+  };
+};
+
+const TableRow: React.FC<TableRowProps> = ({
+  cells,
+  isHeader,
+  hasRowHeader,
+}) => {
+  if (!Array.isArray(cells)) {
+    return null;
+  }
 
   return (
     <tr className="notion-table-row">
-      {cells.map((cell, index) => (
-        <td key={index} className="notion-table-cell">
-          <RichText
-            props={cell.map((text: Partial<TextArgs>) => ({
-              type: text.type || "text",
-              text: text.text || { content: "" },
-              annotations: text.annotations || {
-                bold: false,
-                italic: false,
-                strikethrough: false,
-                underline: false,
-                code: false,
-                color: "default",
-              },
-              plain_text: text.plain_text || "",
-              href: text.href || null,
-            }))}
-          />
-        </td>
-      ))}
+      {cells.map((cell, index) => {
+        const CellTag = isHeader || (hasRowHeader && index === 0) ? "th" : "td";
+        return (
+          <CellTag key={index} className="notion-table-cell">
+            <RichText props={cell.map(convertRichTextToTextArgs)} />
+          </CellTag>
+        );
+      })}
     </tr>
   );
 };
