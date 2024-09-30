@@ -656,7 +656,7 @@ fetchNotionPage();
 | Equation                 | ❌ No     | `equation`             |      |
 | Code                     | ❌ No     | `code`                 |      |
 | Image                    | ❌ No     | `image`                |      |
-| Video                    | ❌ No     | `video`                |      |
+| Video                    | ✅ Yes    | `video`                |      |
 | Bookmark                 | ❌ No     | `bookmark`             |      |
 | Divider                  | ✅ Yes    | `divider`              |      |
 | Table                    | ❌ No     | `table`                |      |

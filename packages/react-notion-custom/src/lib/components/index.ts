@@ -8,6 +8,7 @@ import Callout from "./callout";
 import BulletedListItem from "./bulleted-list-item";
 import Divider from "./divider";
 import Todo from "./to-do";
+import Video from "./video";
 
 export {
   Headings,
@@ -20,6 +21,7 @@ export {
   BulletedListItem,
   Divider,
   Todo,
+  Video,
 };
 
 export default {
@@ -35,4 +37,5 @@ export default {
   callout: Callout,
   divider: Divider,
   to_do: Todo,
+  video: Video,
 };
