@@ -9,6 +9,7 @@ import BulletedListItem from "./bulleted-list-item";
 import Divider from "./divider";
 import Table from "./table";
 import TableRow from "./table-row";
+import Video from "./video";
 
 export {
   Headings,
@@ -22,6 +23,7 @@ export {
   Divider,
   Table,
   TableRow,
+  Video,
 };
 
 export default {
@@ -38,4 +40,5 @@ export default {
   divider: Divider,
   table: Table,
   table_row: TableRow,
+  video: Video,
 };

@@ -573,6 +573,7 @@
   border-radius: 3px;
   transition: background 20ms ease-in 0s;
 }
+
 .notion-equation-block {
   display: flex;
   flex-direction: column;
@@ -608,11 +609,11 @@
   margin-left: 2.9em;
 }
 
-.notion-list-marker::after {
+.notion-list-numbered .notion-list-marker::after {
   content: ".";
 }
 
-.notion-list-marker {
+.notion-list-numbered .notion-list-marker {
   width: 26px;
   display: inline-flex;
   flex-shrink: 0;
@@ -626,6 +627,7 @@
   padding-bottom: 4px;
   display: flex;
 }
+
 .notion-quote-content {
   display: block;
   word-break: break-word;
@@ -633,6 +635,7 @@
   padding-right: 14px;
   border-left: 3px solid currentcolor;
 }
+
 .notion-quote {
   padding: 3px 2px;
   margin: 3px 0px 3px 1px;
@@ -684,7 +687,7 @@
   align-items: flex-start;
 }
 
-.notion-list-marker {
+.notion-list-bulleted .notion-list-marker {
   user-select: none;
   width: 24px;
   flex-shrink: 0;
@@ -742,7 +745,6 @@
   text-align: left;
 }
 
-/* Add these variables to the existing light and dark theme sections */
 [data-theme="light"] .notion,
 .notion {
   --notion-table-border-color: rgba(55, 53, 47, 0.09);
@@ -754,4 +756,12 @@
   --notion-table-border-color: rgba(255, 255, 255, 0.13);
   --notion-table-header-background: rgba(255, 255, 255, 0.04);
   --notion-table-cell-color: rgba(255, 255, 255, 0.9);
+  
+.notion-video {
+  margin: 4px 0px;
+}
+
+.notion-video-content {
+  display: flex;
+  flex-direction: column;
 }
