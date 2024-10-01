@@ -4,7 +4,7 @@ const ColumnList: React.FC<{ children: React.ReactNode } & ColumnListArgs> = ({
   children,
   ...props
 }) => {
-  const columnCount = props.blocks?.length || 0;
+  const columnCount = props.blocks?.length ?? 0;
 
   return (
     <div
