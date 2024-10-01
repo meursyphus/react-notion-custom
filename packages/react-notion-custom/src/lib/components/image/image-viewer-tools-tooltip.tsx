@@ -5,12 +5,16 @@ type ImageViewerToolsToolTipProps = {
   content: string;
   children: React.ReactNode;
   className?: string;
+  hint: string;
+  disabled?: boolean;
 };
 
 const ImageViewerToolsToolTip: React.FC<ImageViewerToolsToolTipProps> = ({
-  content,
   children,
   className,
+  content,
+  hint,
+  disabled = false,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -21,22 +25,26 @@ const ImageViewerToolsToolTip: React.FC<ImageViewerToolsToolTipProps> = ({
       className="notion-image-viewer-tooltip-container"
     >
       {children}
-      <AnimatePresence>
-        {isVisible && (
-          <motion.p
-            className={`notion-image-viewer-tooltip ${className}`}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={{
-              hidden: { opacity: 0, y: -5 },
-              visible: { opacity: 1, y: 0 },
-            }}
-          >
-            {content}
-          </motion.p>
-        )}
-      </AnimatePresence>
+      {!disabled && (
+        <AnimatePresence>
+          {isVisible && (
+            <motion.div
+              className={`notion-image-viewer-tooltip ${className}`}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={{
+                hidden: { opacity: 0, y: -5 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
+              <p>{content}</p>
+
+              <p>{hint}</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </motion.div>
   );
 };

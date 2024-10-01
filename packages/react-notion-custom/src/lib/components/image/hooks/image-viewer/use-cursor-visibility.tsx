@@ -1,11 +1,11 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useCallback } from "react";
 
 export const useCursorVisibility = () => {
-  const [cursorVisible, setCursorVisible] = useState(true);
+  const [isCursorVisible, setIsisCursorVisible] = useState(true);
   const cursorTimeOutRef = useRef<NodeJS.Timeout>();
 
   const handleMoveMouse = useCallback(() => {
-    setCursorVisible(true);
+    setIsisCursorVisible(true);
 
     clearTimeout(cursorTimeOutRef.current);
 
@@ -14,16 +14,12 @@ export const useCursorVisibility = () => {
     }
 
     cursorTimeOutRef.current = setTimeout(() => {
-      setCursorVisible(false);
-    }, 5000);
-  }, []);
-
-  useEffect(() => {
-    return () => {};
+      setIsisCursorVisible(false);
+    }, 2000);
   }, []);
 
   return {
-    cursorVisible,
+    isCursorVisible,
     handleMoveMouse,
   };
 };

@@ -1,13 +1,15 @@
 import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import ImageViewerTools from "./image-viewer-tools";
 import {
   useCursorVisibility,
-  useImageDownload,
   useImageNavigation,
   useImageScale,
 } from "./hooks/image-viewer";
+
+import { getCursorStyle } from "./lib";
+
+import ImageViewerTools from "./image-viewer-tools";
 
 type ImageViewerProps = {
   children: React.ReactNode;
@@ -31,32 +33,46 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
 
   const {
     imageRef,
-    scaleInputFocused,
-    setScaleInputFocused,
-    handleScaleInputBlur,
-    handleScaleInputFocus,
-    handleScaleInputChange,
+    scaleInputRef,
+    isScaleFocus,
+    setIsScaleFocus,
+    handleScaleBlur,
+    handleScaleFocus,
+    handleScaleEnter,
+    handleScaleChange,
     scale,
+    displayScale,
+    setScale,
+    setDisplayScale,
     scaleOriginX,
     scaleOriginY,
     handleZoomInOut,
-    scaleUp,
-    scaleDown,
+    handleScaleUp,
+    handleScaleDown,
   } = useImageScale();
 
-  const { cursorVisible, handleMoveMouse } = useCursorVisibility();
-  const { handleDownload } = useImageDownload(urls[currentImageIndex]);
+  const { isCursorVisible, handleMoveMouse } = useCursorVisibility();
+
+  useEffect(() => {
+    if (currentImageIndex || isOpened) {
+      setScale(1);
+      setDisplayScale(100);
+    }
+  }, [isOpened, currentImageIndex, setScale, setDisplayScale]);
 
   useEffect(() => {
     if (!isOpened) {
       return;
     }
 
+    imageRef.current?.focus();
+
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyDownEvents: { [key: string]: () => void } = {
         Escape: () => setIsOpened(false),
-        "+": scaleUp,
-        "-": scaleDown,
+        "+": handleScaleUp,
+        "=": handleScaleUp,
+        "-": handleScaleDown,
         ArrowLeft: toPreviousImage,
         ArrowRight: toNextImage,
       };
@@ -69,11 +85,18 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpened, scaleUp, scaleDown, toNextImage, toPreviousImage]);
+  }, [
+    imageRef,
+    isOpened,
+    handleScaleUp,
+    handleScaleDown,
+    toNextImage,
+    toPreviousImage,
+  ]);
 
   const handleImageClick = useCallback(
     (clickedUrl: string) => {
-      const index = urls.findIndex((imgUrl) => imgUrl === clickedUrl); // 클릭한 URL의 인덱스 찾기
+      const index = urls.findIndex((imgUrl) => imgUrl === clickedUrl);
       if (index !== -1) {
         setCurrentImageIndex(index);
         setIsOpened(true);
@@ -96,7 +119,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
         {isOpened && (
           <motion.div
             role="dialog"
-            className={`notion-image-viewer-container ${cursorVisible ? "" : "notion-hide-cursor"}`}
+            className={`notion-image-viewer-container ${isCursorVisible ? "notion-visible-cursor" : "notion-hide-cursor"}`}
             aria-modal="true"
             onMouseMove={handleMoveMouse}
             initial={{ opacity: 0 }}
@@ -105,46 +128,46 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
             tabIndex={-1}
           >
             <button
-              onClick={() => setIsOpened(false)}
               className="notion-image-viewer-overlay"
+              onClick={() => setIsOpened(false)}
             />
             <motion.img
               key={urls[currentImageIndex]}
               ref={imageRef}
-              className={`notion-image-viewer-container-image ${cursorVisible ? "" : "notion-hide-cursor"}`}
+              className={`notion-image-viewer-container-image ${isCursorVisible ? "notion-visible-cursor" : "notion-hide-cursor"}`}
               src={urls[currentImageIndex]}
               alt="posting image"
               style={{
                 transform: `scale(${scale})`,
                 transformOrigin: `${scaleOriginX * 100}% ${scaleOriginY * 100}%`,
-                cursor:
-                  scale === 1
-                    ? "zoom-in"
-                    : scale > 1
-                      ? "zoom-out"
-                      : scale < 1
-                        ? "zoom-in"
-                        : "zoom-out",
+                cursor: getCursorStyle(scale),
               }}
               onClick={handleZoomInOut}
             />
 
-            <ImageViewerTools
-              scale={scale}
-              scaleUp={scaleUp}
-              setIsOpened={setIsOpened}
-              scaleDown={scaleDown}
-              scaleInputFocused={scaleInputFocused}
-              setScaleInputFocused={setScaleInputFocused}
-              onScaleInputBlur={handleScaleInputBlur}
-              onScaleInputChange={handleScaleInputChange}
-              onScaleInputFocus={handleScaleInputFocus}
-              hasPrevious={hasPrevious}
-              hasNext={hasNext}
-              toPreviousImage={toPreviousImage}
-              toNextImage={toNextImage}
-              onDownload={handleDownload}
-            />
+            {isCursorVisible && (
+              <ImageViewerTools
+                url={urls[currentImageIndex]}
+                currentImageIndex={currentImageIndex}
+                imageLength={urls.length}
+                scaleInputRef={scaleInputRef}
+                scale={scale}
+                displayScale={displayScale}
+                setIsOpened={setIsOpened}
+                onScaleUp={handleScaleUp}
+                onScaleDown={handleScaleDown}
+                isScaleFocus={isScaleFocus}
+                setIsScaleFocus={setIsScaleFocus}
+                onScaleBlur={handleScaleBlur}
+                onScaleFocus={handleScaleFocus}
+                onScaleEnter={handleScaleEnter}
+                onScaleChange={handleScaleChange}
+                hasPrevious={hasPrevious}
+                hasNext={hasNext}
+                toPreviousImage={toPreviousImage}
+                toNextImage={toNextImage}
+              />
+            )}
           </motion.div>
         )}
       </AnimatePresence>

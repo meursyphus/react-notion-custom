@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import type { ContextedBlock, ImageArgs } from "../../types";
 import RichText from "../internal/rich-text";
 import ImageViewer from "./image-viewer";
-import { getImgUrlOrNull } from "./lib/get-image-url-or-null";
+import { getImgUrlOrNull } from "./lib";
 
 type ImageProps = {
   children: React.ReactNode;
@@ -18,10 +18,6 @@ const Image: React.FC<ImageProps> = ({ children, ...props }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    if (!url) {
-      return;
-    }
-
     let startBlock: ContextedBlock = props;
 
     while (startBlock.context.parent !== null) {

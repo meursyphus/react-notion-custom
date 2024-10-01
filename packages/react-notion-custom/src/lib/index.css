@@ -837,6 +837,7 @@
   justify-content: center;
   align-items: center;
   width: 60px !important;
+  color: #888888;
 }
 
 .notion-image-viewer-tools .notion-image-viewer-scaler input:focus {
@@ -856,6 +857,7 @@ input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
 .notion-image-viewer-tools .notion-image-viewer-scaler > button:first-of-type {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -882,9 +884,7 @@ input[type="number"] {
 .notion-image-viewer-tools button:not(:disabled) {
   cursor: pointer;
 }
-.notion-hide-cursor {
-  cursor: none !important;
-}
+
 .notion-image-viewer-opener {
   cursor: pointer;
 }
@@ -933,6 +933,7 @@ input[type="number"] {
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
+  transition: 2s all ease-in-out;
 }
 
 .notion-image-viewer-tooltip-container {
@@ -941,18 +942,26 @@ input[type="number"] {
 }
 
 .notion-image-viewer-tooltip {
+  display: flex;
+  align-items: center;
   position: absolute;
   top: -35px;
   left: -35%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgb(38, 38, 38);
   color: white;
   padding: 8px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 15px;
   white-space: nowrap;
   pointer-events: none;
   z-index: 10;
+}
+
+.notion-image-viewer-tooltip p:last-child {
+  margin-left: 5px;
+  color: #d3d3d3;
+  font-size: 13px;
 }
 
 button {
