@@ -661,8 +661,8 @@ fetchNotionPage();
 | Divider                  | ✅ Yes    | `divider`              |      |
 | Table                    | ❌ No     | `table`                |      |
 | Table Row                | ❌ No     | `table_row`            |      |
-| Column                   | ❌ No     | `column`               |      |
-| Column List              | ❌ No     | `column_list`          |      |
+| Column                   | ✅ Yes    | `column`               |      |
+| Column List              | ✅ Yes    | `column_list`          |      |
 | Audio                    | ❌ No     | `audio`                |      |
 | Synced Block             | ❌ No     | `synced_block`         |      |
 | Table Of Contents        | ❌ No     | `table_of_contents`    |      |
