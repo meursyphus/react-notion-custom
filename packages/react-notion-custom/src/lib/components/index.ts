@@ -8,6 +8,8 @@ import Callout from "./callout";
 import BulletedListItem from "./bulleted-list-item";
 import Divider from "./divider";
 import Video from "./video";
+import Column from "./column";
+import ColumnList from "./column-list";
 
 export {
   Headings,
@@ -20,6 +22,8 @@ export {
   BulletedListItem,
   Divider,
   Video,
+  Column,
+  ColumnList,
 };
 
 export default {
@@ -35,4 +39,6 @@ export default {
   callout: Callout,
   divider: Divider,
   video: Video,
+  column: Column,
+  column_list: ColumnList,
 };
