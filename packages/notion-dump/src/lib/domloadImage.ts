@@ -16,27 +16,51 @@ async function downloadImage({
   return response.headers.get("Content-Type") || "";
 }
 
-function getFileExtension(contentType: string, originalUrl: string): string {
-  // First, try to determine extension from Content-Type
-  const mimeToExt: { [key: string]: string } = {
-    "image/jpeg": ".jpg",
-    "image/png": ".png",
-    "image/gif": ".gif",
-    "image/webp": ".webp",
-    "image/svg+xml": ".svg",
-  };
+import * as path from "path";
 
-  const ext = mimeToExt[contentType];
-  if (ext) return ext;
+type SupportedImageMimeType = 
+  | "image/jpeg"
+  | "image/png"
+  | "image/gif"
+  | "image/webp"
+  | "image/svg+xml";
+
+type SupportedImageExtension = ".jpg" | ".png" | ".gif" | ".webp" | ".svg";
+
+const DEFAULT_IMAGE_EXTENSION: SupportedImageExtension = ".jpg";
+
+const mimeTypeToExtensionMap: Record<SupportedImageMimeType, SupportedImageExtension> = {
+  "image/jpeg": ".jpg",
+  "image/png": ".png",
+  "image/gif": ".gif",
+  "image/webp": ".webp",
+  "image/svg+xml": ".svg",
+};
+
+function getFileExtensionFromContentType(contentType: string): SupportedImageExtension | undefined {
+  return mimeTypeToExtensionMap[contentType as SupportedImageMimeType];
+}
+
+function getFileExtensionFromUrl(url: string): string {
+  const urlSegments = url.split("/");
+  const filenameWithQuery = urlSegments[urlSegments.length - 1];
+  const filename = filenameWithQuery.split("?")[0];
+  return path.extname(filename);
+}
+
+function getFileExtension(contentType: string, originalUrl: string): SupportedImageExtension {
+  // First, try to determine extension from Content-Type
+  const extensionFromContentType = getFileExtensionFromContentType(contentType);
+  if (extensionFromContentType) return extensionFromContentType;
 
   // If Content-Type doesn't help, try to extract from the URL
-  const urlParts = originalUrl.split("/");
-  const filename = urlParts[urlParts.length - 1].split("?")[0];
-  const fileExtension = path.extname(filename);
-  if (fileExtension) return fileExtension;
+  const extensionFromUrl = getFileExtensionFromUrl(originalUrl);
+  if (extensionFromUrl && Object.values(mimeTypeToExtensionMap).includes(extensionFromUrl as SupportedImageExtension)) {
+    return extensionFromUrl as SupportedImageExtension;
+  }
 
   // Default to .jpg if we can't determine the extension
-  return ".jpg";
+  return DEFAULT_IMAGE_EXTENSION;
 }
 
 async function updateImageOnBlock(
