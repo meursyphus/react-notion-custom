@@ -1,5 +1,5 @@
 import { Sync } from "factory.ts";
-import { ImageBlockObjectResponseExtended } from "./domloadImage.helper";
+import { ImageBlockObjectResponseExtended } from "./downloadImage.helper";
 
 export const fileImageFactory = Sync.makeFactory<
   Extract<ImageBlockObjectResponseExtended["image"], { type: "file" }>

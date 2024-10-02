@@ -1,7 +1,7 @@
 import { Client } from "@cozy-blog/notion-client";
 import * as fs from "fs";
 import * as path from "path";
-import { updateImageOnBlocks } from "./domloadImage";
+import { updateImageOnBlocks } from "./downloadImage";
 
 export async function fetchAndSavePageData({
   client,

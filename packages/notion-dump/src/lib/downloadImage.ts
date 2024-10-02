@@ -6,7 +6,7 @@ import {
   getImageUrl,
   isImageBlock,
   updateImageUrl,
-} from "./domloadImage.helper";
+} from "./downloadImage.helper";
 
 async function downloadImage({
   url,
