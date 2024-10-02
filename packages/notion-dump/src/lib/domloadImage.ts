@@ -1,10 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import {
-  getFileExtension,
-  SupportedImageExtension,
-  DEFAULT_IMAGE_EXTENSION,
-} from "./fileExtensionUtils";
+import { getFileExtension } from "./fileExtensionUtils";
 
 async function downloadImage({
   url,
