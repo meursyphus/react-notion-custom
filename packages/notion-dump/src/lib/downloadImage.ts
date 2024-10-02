@@ -1,10 +1,12 @@
 import * as fs from "fs";
 import * as path from "path";
+import { getFileExtension } from "./fileExtensionUtils";
+import { Block } from "@cozy-blog/notion-client";
 import {
-  getFileExtension,
-  SupportedImageExtension,
-  DEFAULT_IMAGE_EXTENSION,
-} from "./fileExtensionUtils";
+  getImageUrl,
+  isImageBlock,
+  updateImageUrl,
+} from "./downloadImage.helper";
 
 async function downloadImage({
   url,
@@ -26,15 +28,14 @@ async function updateImageOnBlock(
     imageDir,
     pageId,
   }: {
-    block: any;
+    block: Block;
     imageDir: string;
     pageId: string;
   },
   imageCounter: { count: number },
 ): Promise<void> {
-  if (block.type === "image") {
-    const imageType = block.image.type;
-    const originalUrl = block.image[imageType].url;
+  if (isImageBlock(block)) {
+    const originalUrl = getImageUrl(block);
     const imageName = `image_${imageCounter.count}`;
     const tempPath = path.join(imageDir, `${imageName}_temp`);
 
@@ -52,7 +53,7 @@ async function updateImageOnBlock(
       await fs.promises.rename(tempPath, finalPath);
 
       const newUrl = `/notion-data/${pageId}/${imageName}${extension}`;
-      block.image[imageType].url = newUrl;
+      updateImageUrl(block, newUrl);
 
       console.log(`Image saved: ${finalPath}`);
     } catch (error) {
@@ -76,7 +77,7 @@ export async function updateImageOnBlocks({
   pageId,
   imageCounter = { count: 1 },
 }: {
-  blocks: any[];
+  blocks: Block[];
   imageDir: string;
   pageId: string;
   imageCounter?: { count: number };
