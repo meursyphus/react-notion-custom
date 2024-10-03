@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import copyToClipboard from "clipboard-copy";
 import RichText from "../internal/rich-text";
 import Prisim from "prismjs";
@@ -26,10 +26,7 @@ import type { CodeArgs } from "../../types";
   loadSql,
 ].forEach((load) => load(Prisim));
 
-const Code = ({
-  children,
-  ...props
-}: CodeArgs & { children: React.ReactNode }) => {
+const Code = ({ ...props }: CodeArgs) => {
   const {
     code: { caption, rich_text: texts, language },
   } = props;
