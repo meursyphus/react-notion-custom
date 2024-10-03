@@ -724,7 +724,7 @@
   font-size: 14px;
   line-height: 20px;
   color: var(--notion-table-cell-color);
-  border-top: 1px solid var(--notion-table-border-color);
+  border-top: 1px solid var(--fg-color-5);
   border-left: 1px solid var(--notion-table-border-color);
   min-width: 120px;
   max-width: 240px;
@@ -747,16 +747,16 @@
 
 [data-theme="light"] .notion,
 .notion {
-  --notion-table-border-color: rgba(55, 53, 47, 0.09);
+  --notion-table-border-color: var(--fg-color-5);
   --notion-table-header-background: rgba(247, 246, 243, 0.5);
   --notion-table-cell-color: rgb(55, 53, 47);
 }
 
 [data-theme="dark"] .notion {
   --notion-table-border-color: rgba(255, 255, 255, 0.13);
-  --notion-table-header-background: rgba(255, 255, 255, 0.04);
+  --notion-table-header-background: var(--bg-color-1);
   --notion-table-cell-color: rgba(255, 255, 255, 0.9);
-  
+}
 .notion-video {
   margin: 4px 0px;
 }
