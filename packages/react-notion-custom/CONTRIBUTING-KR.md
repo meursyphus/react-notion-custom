@@ -654,7 +654,7 @@ fetchNotionPage();
 | Quote                    | ✅ Yes    | `quote`                |      |
 | Callout                  | ✅ Yes    | `callout`              |      |
 | Equation                 | ❌ No     | `equation`             |      |
-| Code                     | ❌ No     | `code`                 |      |
+| Code                     | ✅ Yes    | `code`                 |      |
 | Image                    | ❌ No     | `image`                |      |
 | Video                    | ✅ Yes    | `video`                |      |
 | Bookmark                 | ❌ No     | `bookmark`             |      |
