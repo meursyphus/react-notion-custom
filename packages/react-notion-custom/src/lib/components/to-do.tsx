@@ -1,7 +1,7 @@
 import React from "react";
-import type { TodoArgs } from "../types";
-import { getColorCss } from "../utils";
+import { TodoArgs } from "../types";
 import RichText from "./internal/rich-text";
+import { getColorCss } from "../utils";
 
 type TodoProps = {
   children?: React.ReactNode;
@@ -14,27 +14,18 @@ const Todo: React.FC<TodoProps> = ({ children, ...props }) => {
 
   return (
     <div className={`notion-block notion-to-do ${getColorCss(color)}`}>
-      <div className="notion-to-do-item">
-        <div className="notion-to-do-item-content">
-          <div className="notion-to-do-checkbox-wrapper">
-            <input
-              type="checkbox"
-              checked={checked}
-              readOnly
-              className="notion-to-do-checkbox"
-            />
-            <span className="notion-to-do-checkbox-custom"></span>
-          </div>
-          <div
-            className={`notion-to-do-text ${
-              checked ? "notion-to-do-checked" : ""
-            }`}
-          >
-            <RichText props={texts} />
-          </div>
+      <div
+        aria-checked={checked}
+        className={`notion-to-do-content ${checked ? "notion-to-do-checked" : ""}`}
+      >
+        <div className="notion-to-do-checkbox">
+          <input type="checkbox" checked={checked} readOnly />
         </div>
-        {children}
+        <p className="notion-to-do-text">
+          <RichText props={texts} />
+        </p>
       </div>
+      {children}
     </div>
   );
 };

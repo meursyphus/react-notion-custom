@@ -704,74 +704,31 @@
   border-top: 1px solid rgba(223, 223, 222, 1);
 }
 
-.notion-to-do {
-  padding: 3px 2px;
-  margin: 3px 0px 3px 1px;
-}
-
-.notion-to-do-item {
-  display: flex;
-  align-items: flex-start;
-}
-
-.notion-to-do-item-content {
+.notion-to-do-content {
   display: flex;
   align-items: center;
-  width: 100%;
-}
-
-.notion-to-do-checkbox-wrapper {
-  position: relative;
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
 }
 
 .notion-to-do-checkbox {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-.notion-to-do-checkbox-custom {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 16px;
-  width: 16px;
-  background-color: transparent;
-  border: 2px solid rgba(55, 53, 47, 0.16);
-  border-radius: 3px;
-}
-
-.notion-to-do-checkbox:checked ~ .notion-to-do-checkbox-custom {
-  background-color: rgb(35, 131, 226);
-  border-color: rgb(35, 131, 226);
-}
-
-.notion-to-do-checkbox:checked ~ .notion-to-do-checkbox-custom::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 1px;
-  width: 4px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+  display: inline-block;
+  padding: 8px 6px;
 }
 
 .notion-to-do-text {
-  flex: 1;
+  padding: 3px 2px;
 }
 
-.notion-to-do-checked {
+.notion-to-do-checked .notion-to-do-text {
   text-decoration: line-through;
-  opacity: 0.5;
+  opacity: 0.6;
 }
-  
+
+.notion-to-do-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 6px;
+}
+
 .notion-video {
   margin: 4px 0px;
 }
