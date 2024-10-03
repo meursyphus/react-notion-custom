@@ -3,6 +3,7 @@ export function getCodeExampleJson(code: string, language: string) {
     {
       object: "block",
       type: "code",
+      id: "id",
       code: {
         caption: [],
         language: language,
