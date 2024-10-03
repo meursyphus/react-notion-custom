@@ -821,12 +821,6 @@
   opacity: 1;
 }
 
-.notion-code-copy-button svg {
-  display: block;
-  height: 14px;
-  width: 14px;
-}
-
 .notion-code-copy-tooltip {
   pointer-events: none;
   position: fixed;
@@ -838,6 +832,9 @@
   justify-content: center;
   z-index: 99;
   font-size: 14px;
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
 }
 
 .notion-code-copy-tooltip > div {
@@ -845,6 +842,23 @@
   background: #222;
   color: #fff;
   border-radius: 6px;
+}
+
+.notion-code-copy-tooltip > div {
+  padding: 6px 8px;
+  background: #222;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.notion-code-copy-tooltip.notion-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.notion-code-copy-tooltip.notion-hidden {
+  opacity: 0;
+  transform: translateY(120%);
 }
 
 .notion-column-list {

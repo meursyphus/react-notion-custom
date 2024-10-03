@@ -10,6 +10,7 @@ import Divider from "./divider";
 import Video from "./video";
 import Column from "./column";
 import ColumnList from "./column-list";
+import Code from "./code";
 
 export {
   Headings,
@@ -24,6 +25,7 @@ export {
   Video,
   Column,
   ColumnList,
+  Code,
 };
 
 export default {
@@ -41,4 +43,5 @@ export default {
   video: Video,
   column: Column,
   column_list: ColumnList,
+  code: Code,
 };

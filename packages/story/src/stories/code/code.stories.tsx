@@ -5,14 +5,14 @@ import json from "./code.json";
 const blocks = json.blocks as any;
 
 const meta: Meta<typeof Component> = {
-  title: "Blocks/Divider",
+  title: "Blocks/Code",
   component: Component,
 };
 
 export default meta;
 type Story = StoryObj<typeof Component>;
 
-export const Divider: Story = {
+export const Code: Story = {
   args: {
     title: "Code",
     blocks: blocks,
