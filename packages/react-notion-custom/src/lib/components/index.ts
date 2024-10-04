@@ -11,6 +11,7 @@ import Video from "./video";
 import Column from "./column";
 import ColumnList from "./column-list";
 import Code from "./code";
+import Todo from "./todo";
 
 export {
   Headings,
@@ -26,6 +27,7 @@ export {
   Column,
   ColumnList,
   Code,
+  Todo,
 };
 
 export default {
@@ -44,4 +46,5 @@ export default {
   column: Column,
   column_list: ColumnList,
   code: Code,
+  to_do: Todo,
 };

@@ -652,7 +652,7 @@ Here's a list of Notion block types currently supported in react-notion-custom. 
 | Heading 3                | ✅ Yes         | `heading_3`            |      |
 | Bulleted List Item       | ✅ Yes         | `bulleted_list_item`   |      |
 | Numbered List Item       | ✅ Yes         | `numbered_list_item`   |      |
-| To-do                    | ❌ No          | `to_do`                |      |
+| To-do                    | ✅ Yes         | `to_do`                |      |
 | Toggle                   | ✅ Yes         | `toggle`               |      |
 | Quote                    | ✅ Yes         | `quote`                |      |
 | Callout                  | ✅ Yes         | `callout`              |      |
