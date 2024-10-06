@@ -7,7 +7,6 @@ import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-  console.log(theme);
 
   useEffect(() => setMounted(true), []);
 
@@ -17,11 +16,11 @@ export default function ThemeToggle() {
     <button
       aria-label="Toggle Dark Mode"
       type="button"
-      className="p-2 rounded-md light:bg-gray-200 dark:bg-gray-700 transition-colors"
+      className="p-2"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (
-        <SunIcon className="h-5 w-5 text-gray-800" />
+        <SunIcon className="h-5 w-5 text-white" />
       ) : (
         <MoonIcon className="h-5 w-5 text-gray-800" />
       )}
