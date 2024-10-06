@@ -20,35 +20,35 @@ video,
 canvas,
 svg {
   display: block;
-  max-width: 100%; /* 반응형 미디어 */
+  max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-  font: inherit; /* 폰트 상속 */
+  font: inherit;
 }
 
 button {
-  cursor: pointer; /* 버튼에 커서 포인터 */
+  cursor: pointer;
 }
 
 a {
-  text-decoration: none; /* 링크 밑줄 제거 */
-  color: inherit; /* 부모 요소의 색상 상속 */
+  text-decoration: none;
+  color: inherit;
 }
 
 ul,
 ol {
-  list-style: none; /* 리스트 스타일 제거 */
+  list-style: none;
 }
 
 /* Global Styles */
 body {
   line-height: 1.6;
-  background-color: #f8f9fa; /* 기본 배경 색상 */
-  color: #343a40; /* 기본 텍스트 색상 */
+  background-color: #f8f9fa;
+  color: #343a40;
 }
 
 h1,
@@ -61,32 +61,26 @@ h6 {
   line-height: 1.2;
 }
 
-.container {
-  width: 100%;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 15px;
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0eg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
-
-.flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.logo-image {
+  transition: transform 0.1s ease-in-out;
 }
-
-.text-center {
-  text-align: center;
-}
-
-.btn {
-  display: inline-block;
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-  background-color: #0056b3;
+.logo-image:hover {
+  animation: shake 0.5s ease-in-out;
 }
