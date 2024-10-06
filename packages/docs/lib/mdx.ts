@@ -7,28 +7,38 @@ import { getGroupOrder, GroupId } from "@/constants/group";
 
 const contentDirectory = path.join(process.cwd(), "content", "guide");
 
+interface DocumentData {
+  slug: string;
+  content: string;
+  title: string;
+  group: string;
+  prevDocument: { slug: string; title: string; group: string } | null;
+  nextDocument: { slug: string; title: string; group: string } | null;
+}
+
 export async function getDocumentBySlug(
   lang: string,
   group: string,
   slug: string,
-) {
+): Promise<DocumentData> {
+  const notFoundDocument: DocumentData = {
+    slug: "",
+    content: "<p>Document not found</p>",
+    title: "Not Found",
+    group: "",
+    prevDocument: null,
+    nextDocument: null,
+  };
+
   if (!lang || !group || !slug) {
-    return {
-      slug: "",
-      content: "<p>Document not found</p>",
-      title: "Not Found",
-    };
+    return notFoundDocument;
   }
 
   const groupOrder = getGroupOrder(group as GroupId);
   const groupDir = path.join(contentDirectory, lang, `${groupOrder}. ${group}`);
 
   if (!fs.existsSync(groupDir)) {
-    return {
-      slug,
-      content: "<p>Document not found</p>",
-      title: "Not Found",
-    };
+    return notFoundDocument;
   }
 
   const files = fs.readdirSync(groupDir);
@@ -36,7 +46,6 @@ export async function getDocumentBySlug(
 
   for (const file of files) {
     const filePath = path.join(groupDir, file);
-
     const stat = fs.statSync(filePath);
 
     if (stat.isFile()) {
@@ -51,11 +60,7 @@ export async function getDocumentBySlug(
   }
 
   if (!targetFile) {
-    return {
-      slug,
-      content: "<p>Document not found</p>",
-      title: "Not Found",
-    };
+    return notFoundDocument;
   }
 
   const fileContents = fs.readFileSync(targetFile, "utf8");
@@ -63,12 +68,21 @@ export async function getDocumentBySlug(
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
 
+  const allDocuments = getAllDocuments(lang);
+  const currentIndex = allDocuments.findIndex((doc) => doc.slug === slug);
+  const prevDocument = currentIndex > 0 ? allDocuments[currentIndex - 1] : null;
+  const nextDocument =
+    currentIndex < allDocuments.length - 1
+      ? allDocuments[currentIndex + 1]
+      : null;
+
   return {
     slug,
     content: contentHtml,
     title: data.title || "Untitled",
-    group: data.group,
-    ...data,
+    group: data.group || "",
+    prevDocument,
+    nextDocument,
   };
 }
 
@@ -102,5 +116,7 @@ function getAllDocumentsRecursive(dir: string): any[] {
 
 export function getAllDocuments(lang: string) {
   const langDir = path.join(contentDirectory, lang);
-  return getAllDocumentsRecursive(langDir);
+  const documents = getAllDocumentsRecursive(langDir);
+
+  return documents;
 }
