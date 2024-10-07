@@ -80,22 +80,25 @@ export default async function GuidePage({ params }: GuidePageProps) {
           {content}
         </ReactMarkdown>
       </div>
-      <div className="mt-8 mb-4 flex justify-between">
-        {prevDocument && (
-          <NavigationButton
-            document={prevDocument}
-            lang={lang}
-            direction="prev"
-          />
-        )}
-
-        {nextDocument && (
-          <NavigationButton
-            document={nextDocument}
-            lang={lang}
-            direction="next"
-          />
-        )}
+      <div className="mt-8 mb-4 flex justify-between gap-4">
+        <div className="flex-1">
+          {prevDocument && (
+            <NavigationButton
+              document={prevDocument}
+              lang={lang}
+              direction="prev"
+            />
+          )}
+        </div>
+        <div className="flex-1">
+          {nextDocument && (
+            <NavigationButton
+              document={nextDocument}
+              lang={lang}
+              direction="next"
+            />
+          )}
+        </div>
       </div>
     </DynamicLayout>
   );

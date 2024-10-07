@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 interface NavigationButtonProps {
   document: {
@@ -17,13 +18,19 @@ export default function NavigationButton({
 }: NavigationButtonProps) {
   return (
     <Link
-      className="border cursor-pointer border-black p-1 sm:p-2 rounded-sm hover:bg-black hover:text-white dark:border-gray-500 dark:hover:bg-black dark:hover:text-white text-sm sm:text-base"
+      className="block w-full border cursor-pointer border-black p-1 sm:p-2 rounded-sm hover:bg-black hover:text-white dark:border-gray-500 dark:hover:bg-black dark:hover:text-white text-sm sm:text-base"
       href={`/${lang}/guide/${document.group}/${document.slug}`}
     >
       {direction === "prev" ? (
-        <p className="max-w-[100px] sm:max-w-full">← {document.title}</p>
+        <div className="flex items-center gap-5 h-16">
+          <ChevronLeftIcon className="h-4 w-4 inline-block" />
+          <p className="max-w-[100px] sm:max-w-full">{document.title}</p>
+        </div>
       ) : (
-        <p className="max-w-[100px] sm:max-w-full">{document.title} →</p>
+        <div className="flex items-center gap-5 justify-end h-16">
+          <p className="max-w-[100px] sm:max-w-full">{document.title}</p>
+          <ChevronRightIcon className="h-4 w-4 inline-block" />
+        </div>
       )}
     </Link>
   );
