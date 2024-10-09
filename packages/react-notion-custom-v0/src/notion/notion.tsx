@@ -1,26 +1,14 @@
 import React, { createContext, useContext, useMemo } from "react";
-import type { Block, ContextedBlock } from "./types";
-import components from "./components";
+import { Block, ContextedBlock } from "./notion.type";
 
-// Component Types
-type BlockComponentProps<T extends Block> = {
-  block: T;
-  children?: React.ReactNode;
+type ComponentProvider = Record<string, React.ComponentType<any>> & {
+  fallback?: React.ComponentType<any>;
 };
-
-type ComponentProvider = {
-  [K in Block["type"]]?: React.ComponentType<
-    BlockComponentProps<Extract<Block, { type: K }>>
-  >;
-} & {
-  fallback?: React.ComponentType<BlockComponentProps<Block>>;
-};
-
 const NotionContext = createContext<ComponentProvider>({});
 
 type NotionProps = {
   children: React.ReactNode;
-  custom?: ComponentProvider;
+  custom?: Record<string, React.ComponentType<any>>;
 };
 
 function Notion({ children, custom = {} }: NotionProps) {

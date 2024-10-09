@@ -14,7 +14,7 @@ export default defineConfig({
     react(),
     // https://github.com/vitejs/vite/issues/1579#issuecomment-1483756199
     libInjectCss(),
-    dts({ exclude: ["**/*.stories.ts", "src/test", "**/*.test.tsx"] }),
+    dts({ exclude: ["src/test", "**/*.test.tsx"] }),
   ],
   build: {
     lib: {
@@ -53,9 +53,6 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: "./src/test/setup.ts",
-    // you might want to disable it, if you don't have tests that rely on CSS
-    // since parsing CSS is slow
-    css: true,
     coverage: {
       include: ["src/components"],
       exclude: ["**/*.stories.ts"],
