@@ -7,8 +7,28 @@ import Quote from "./quote";
 import Callout from "./callout";
 import BulletedListItem from "./bulleted-list-item";
 import Divider from "./divider";
+import Video from "./video";
+import Column from "./column";
+import ColumnList from "./column-list";
+import Code from "./code";
+import Todo from "./todo";
 
-export { Headings, Paragraph, Toggle, Equation, Quote, Callout, NumberedListItem, BulletedListItem, Divider  };
+export {
+  Headings,
+  Paragraph,
+  Toggle,
+  Equation,
+  Quote,
+  Callout,
+  NumberedListItem,
+  BulletedListItem,
+  Divider,
+  Video,
+  Column,
+  ColumnList,
+  Code,
+  Todo,
+};
 
 export default {
   heading_1: Headings,
@@ -22,4 +42,9 @@ export default {
   quote: Quote,
   callout: Callout,
   divider: Divider,
+  video: Video,
+  column: Column,
+  column_list: ColumnList,
+  code: Code,
+  to_do: Todo,
 };

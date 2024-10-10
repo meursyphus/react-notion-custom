@@ -1,0 +1,11 @@
+{
+  // The following settings ensure that the root .prettierrc configuration
+  // is applied consistently across all sub-packages in the project.
+  // This was set up to address an issue where the VSCode extension wasn't automatically formatting on save for sub-packages.
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "prettier.configPath": ".prettierrc",
+  // This setting prevents the specified words from being flagged as spelling errors.
+  // it's expected that more words will be added to this list as needed in the future.
+  "cSpell.words": ["typia"]
+}

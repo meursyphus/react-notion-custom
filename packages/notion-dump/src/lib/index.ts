@@ -7,12 +7,14 @@ import * as path from "path";
 import { fetchAndSavePageData } from "./dumpPage";
 import typia from "typia";
 
-const DEFAULT_OUTPUT_DIR = "content";
+const DEFAULT_OUTPUT_DIR = "notion-data";
+const DEFAULT_IMAGE_OUT_DIR = "public/notion-data";
 
 interface CLIOptions {
   page: string;
   auth: string;
-  outputDir?: string;
+  dir?: string;
+  imageDir?: string;
 }
 
 const program = new Command();
@@ -20,7 +22,12 @@ const program = new Command();
 program
   .requiredOption("--page <pageUrl>", "Notion page URL")
   .requiredOption("--auth <authToken>", "Notion API authentication token")
-  .option("--output-dir <dir>", "Output directory", "content");
+  .option("--dir <dir>", "Output directory", "notion-data")
+  .option(
+    "--image-dir <dir>",
+    "Output directory for images",
+    "public/notion-data",
+  );
 
 program.parse(process.argv);
 
@@ -33,9 +40,11 @@ if (!typia.is<CLIOptions>(options)) {
 
 const pageId = extractPageIdFromUrl(options.page);
 
-const outputDir = path.join(
+const outputDir = path.join(process.cwd(), options.dir || DEFAULT_OUTPUT_DIR);
+
+const imageOutDir = path.join(
   process.cwd(),
-  options.outputDir || DEFAULT_OUTPUT_DIR,
+  options.imageDir || DEFAULT_IMAGE_OUT_DIR,
   pageId,
 );
 
@@ -46,7 +55,7 @@ const client = new Client({ auth: options.auth });
  */
 (async () => {
   try {
-    await fetchAndSavePageData({ client, pageId, outputDir });
+    await fetchAndSavePageData({ client, pageId, outputDir, imageOutDir });
   } catch (error: any) {
     console.error("Error fetching page data:", error.message);
     process.exit(1);
