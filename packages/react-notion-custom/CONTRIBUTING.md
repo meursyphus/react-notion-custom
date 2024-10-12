@@ -662,8 +662,8 @@ Here's a list of Notion block types currently supported in react-notion-custom. 
 | Video                    | ✅ Yes         | `video`                |      |
 | Bookmark                 | ❌ No          | `bookmark`             |      |
 | Divider                  | ✅ Yes         | `divider`              |      |
-| Table                    | ❌ No          | `table`                |      |
-| Table Row                | ❌ No          | `table_row`            |      |
+| Table                    | ✅ Yes         | `table`                |      |
+| Table Row                | ✅ Yes         | `table_row`            |      |
 | Column                   | ✅ Yes         | `column`               |      |
 | Column List              | ✅ Yes         | `column_list`          |      |
 | Audio                    | ❌ No          | `audio`                |      |
