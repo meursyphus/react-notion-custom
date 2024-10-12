@@ -12,6 +12,8 @@ import Column from "./column";
 import ColumnList from "./column-list";
 import Code from "./code";
 import Todo from "./todo";
+import Table from "./table";
+import TableRow from "./table-row";
 
 export {
   Headings,
@@ -28,6 +30,7 @@ export {
   ColumnList,
   Code,
   Todo,
+  Table,
 };
 
 export default {
@@ -47,4 +50,6 @@ export default {
   column_list: ColumnList,
   code: Code,
   to_do: Todo,
+  table: Table,
+  table_row: TableRow,
 };
