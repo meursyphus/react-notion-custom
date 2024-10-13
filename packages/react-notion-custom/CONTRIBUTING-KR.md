@@ -641,49 +641,41 @@ fetchNotionPage();
 
 현재 react-notion-custom에서 지원되는 Notion 블록 타입들의 목록입니다. 이 목록은 지속적으로 업데이트될 예정입니다.
 
-| Block Type               | 지원 여부 | Block Type Enum        | 비고 |
-| ------------------------ | --------- | ---------------------- | ---- |
-| Paragraph                | ✅ Yes    | `paragraph`            |      |
-| Heading 1                | ✅ Yes    | `heading_1`            |      |
-| Heading 2                | ✅ Yes    | `heading_2`            |      |
-| Heading 3                | ✅ Yes    | `heading_3`            |      |
-| Bulleted List Item       | ✅ Yes    | `bulleted_list_item`   |      |
-| Numbered List Item       | ✅ Yes    | `numbered_list_item`   |      |
-| To-do                    | ✅ Yes    | `to_do`                |      |
-| Toggle                   | ✅ Yes    | `toggle`               |      |
-| Quote                    | ✅ Yes    | `quote`                |      |
-| Callout                  | ✅ Yes    | `callout`              |      |
-| Equation                 | ❌ No     | `equation`             |      |
-| Code                     | ✅ Yes    | `code`                 |      |
-| Image                    | ❌ No     | `image`                |      |
-| Video                    | ✅ Yes    | `video`                |      |
-| Bookmark                 | ❌ No     | `bookmark`             |      |
-| Divider                  | ✅ Yes    | `divider`              |      |
-| Table                    | ✅ Yes    | `table`                |      |
-| Table Row                | ✅ Yes    | `table_row`            |      |
-| Column                   | ✅ Yes    | `column`               |      |
-| Column List              | ✅ Yes    | `column_list`          |      |
-| Audio                    | ❌ No     | `audio`                |      |
-| Synced Block             | ❌ No     | `synced_block`         |      |
-| Table Of Contents        | ❌ No     | `table_of_contents`    |      |
-| Embed                    | ❌ No     | `embed`                |      |
-| Figma                    | ❌ No     | `figma`                |      |
-| Google Maps              | ❌ No     | `maps`                 |      |
-| Google Drive             | ❌ No     | `drive`                |      |
-| Tweet                    | ❌ No     | `tweet`                |      |
-| PDF                      | ❌ No     | `pdf`                  |      |
-| File                     | ❌ No     | `file`                 |      |
-| Link                     | ❌ No     | `text` (inline)        |      |
-| Page Link                | ❌ No     | `page`                 |      |
-| External Page Link       | ❌ No     | `text` (inline)        |      |
-| Collections              | ❌ No     | -                      |      |
-| Collection View          | ❌ No     | `collection_view`      |      |
-| Collection View Table    | ❌ No     | `collection_view`      |      |
-| Collection View Gallery  | ❌ No     | `collection_view`      |      |
-| Collection View Board    | ❌ No     | `collection_view`      |      |
-| Collection View List     | ❌ No     | `collection_view`      |      |
-| Collection View Calendar | ❌ No     | `collection_view`      |      |
-| Collection View Page     | ❌ No     | `collection_view_page` |      |
+| Block Type         | 지원 여부 | Block Type Enum      | 비고 |
+| ------------------ | --------- | -------------------- | ---- |
+| Paragraph          | ✅ Yes    | `paragraph`          |      |
+| Heading 1          | ✅ Yes    | `heading_1`          |      |
+| Heading 2          | ✅ Yes    | `heading_2`          |      |
+| Heading 3          | ✅ Yes    | `heading_3`          |      |
+| Bulleted List Item | ✅ Yes    | `bulleted_list_item` |      |
+| Numbered List Item | ✅ Yes    | `numbered_list_item` |      |
+| To-do              | ✅ Yes    | `to_do`              |      |
+| Toggle             | ✅ Yes    | `toggle`             |      |
+| Quote              | ✅ Yes    | `quote`              |      |
+| Callout            | ✅ Yes    | `callout`            |      |
+| Equation           | ❌ No     | `equation`           |      |
+| Code               | ✅ Yes    | `code`               |      |
+| Image              | ❌ No     | `image`              |      |
+| Video              | ✅ Yes    | `video`              |      |
+| Bookmark           | ❌ No     | `bookmark`           |      |
+| Divider            | ✅ Yes    | `divider`            |      |
+| Table              | ✅ Yes    | `table`              |      |
+| Table Row          | ✅ Yes    | `table_row`          |      |
+| Column             | ✅ Yes    | `column`             |      |
+| Column List        | ✅ Yes    | `column_list`        |      |
+| Audio              | ❌ No     | `audio`              |      |
+| Synced Block       | ❌ No     | `synced_block`       |      |
+| Table Of Contents  | ❌ No     | `table_of_contents`  |      |
+| Embed              | ❌ No     | `embed`              |      |
+| Figma              | ❌ No     | `figma`              |      |
+| Google Maps        | ❌ No     | `maps`               |      |
+| Google Drive       | ❌ No     | `drive`              |      |
+| Tweet              | ❌ No     | `tweet`              |      |
+| PDF                | ❌ No     | `pdf`                |      |
+| File               | ❌ No     | `file`               |      |
+| Link               | ❌ No     | `text` (inline)      |      |
+| Page Link          | ❌ No     | `page`               |      |
+| External Page Link | ❌ No     | `text` (inline)      |      |
 
 현재 모든 블록 타입이 지원되지 않고 있습니다 (❌ No). 이 프로젝트는 개발 초기 단계에 있으며, 향후 업데이트를 통해 점진적으로 더 많은 블록 타입을 지원할 예정입니다.
 

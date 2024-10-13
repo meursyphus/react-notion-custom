@@ -644,49 +644,41 @@ Through this method, you can fetch Notion page data and use it with react-notion
 
 Here's a list of Notion block types currently supported in react-notion-custom. This list will be continuously updated.
 
-| Block Type               | Support Status | Block Type Enum        | Note |
-| ------------------------ | -------------- | ---------------------- | ---- |
-| Paragraph                | ✅ Yes         | `paragraph`            |      |
-| Heading 1                | ✅ Yes         | `heading_1`            |      |
-| Heading 2                | ✅ Yes         | `heading_2`            |      |
-| Heading 3                | ✅ Yes         | `heading_3`            |      |
-| Bulleted List Item       | ✅ Yes         | `bulleted_list_item`   |      |
-| Numbered List Item       | ✅ Yes         | `numbered_list_item`   |      |
-| To-do                    | ✅ Yes         | `to_do`                |      |
-| Toggle                   | ✅ Yes         | `toggle`               |      |
-| Quote                    | ✅ Yes         | `quote`                |      |
-| Callout                  | ✅ Yes         | `callout`              |      |
-| Equation                 | ❌ No          | `equation`             |      |
-| Code                     | ✅ Yes         | `code`                 |      |
-| Image                    | ❌ No          | `image`                |      |
-| Video                    | ✅ Yes         | `video`                |      |
-| Bookmark                 | ❌ No          | `bookmark`             |      |
-| Divider                  | ✅ Yes         | `divider`              |      |
-| Table                    | ✅ Yes         | `table`                |      |
-| Table Row                | ✅ Yes         | `table_row`            |      |
-| Column                   | ✅ Yes         | `column`               |      |
-| Column List              | ✅ Yes         | `column_list`          |      |
-| Audio                    | ❌ No          | `audio`                |      |
-| Synced Block             | ❌ No          | `synced_block`         |      |
-| Table Of Contents        | ❌ No          | `table_of_contents`    |      |
-| Embed                    | ❌ No          | `embed`                |      |
-| Figma                    | ❌ No          | `figma`                |      |
-| Google Maps              | ❌ No          | `maps`                 |      |
-| Google Drive             | ❌ No          | `drive`                |      |
-| Tweet                    | ❌ No          | `tweet`                |      |
-| PDF                      | ❌ No          | `pdf`                  |      |
-| File                     | ❌ No          | `file`                 |      |
-| Link                     | ❌ No          | `text` (inline)        |      |
-| Page Link                | ❌ No          | `page`                 |      |
-| External Page Link       | ❌ No          | `text` (inline)        |      |
-| Collections              | ❌ No          | -                      |      |
-| Collection View          | ❌ No          | `collection_view`      |      |
-| Collection View Table    | ❌ No          | `collection_view`      |      |
-| Collection View Gallery  | ❌ No          | `collection_view`      |      |
-| Collection View Board    | ❌ No          | `collection_view`      |      |
-| Collection View List     | ❌ No          | `collection_view`      |      |
-| Collection View Calendar | ❌ No          | `collection_view`      |      |
-| Collection View Page     | ❌ No          | `collection_view_page` |      |
+| Block Type         | Support Status | Block Type Enum      | Note |
+| ------------------ | -------------- | -------------------- | ---- |
+| Paragraph          | ✅ Yes         | `paragraph`          |      |
+| Heading 1          | ✅ Yes         | `heading_1`          |      |
+| Heading 2          | ✅ Yes         | `heading_2`          |      |
+| Heading 3          | ✅ Yes         | `heading_3`          |      |
+| Bulleted List Item | ✅ Yes         | `bulleted_list_item` |      |
+| Numbered List Item | ✅ Yes         | `numbered_list_item` |      |
+| To-do              | ✅ Yes         | `to_do`              |      |
+| Toggle             | ✅ Yes         | `toggle`             |      |
+| Quote              | ✅ Yes         | `quote`              |      |
+| Callout            | ✅ Yes         | `callout`            |      |
+| Equation           | ❌ No          | `equation`           |      |
+| Code               | ✅ Yes         | `code`               |      |
+| Image              | ❌ No          | `image`              |      |
+| Video              | ✅ Yes         | `video`              |      |
+| Bookmark           | ❌ No          | `bookmark`           |      |
+| Divider            | ✅ Yes         | `divider`            |      |
+| Table              | ✅ Yes         | `table`              |      |
+| Table Row          | ✅ Yes         | `table_row`          |      |
+| Column             | ✅ Yes         | `column`             |      |
+| Column List        | ✅ Yes         | `column_list`        |      |
+| Audio              | ❌ No          | `audio`              |      |
+| Synced Block       | ❌ No          | `synced_block`       |      |
+| Table Of Contents  | ❌ No          | `table_of_contents`  |      |
+| Embed              | ❌ No          | `embed`              |      |
+| Figma              | ❌ No          | `figma`              |      |
+| Google Maps        | ❌ No          | `maps`               |      |
+| Google Drive       | ❌ No          | `drive`              |      |
+| Tweet              | ❌ No          | `tweet`              |      |
+| PDF                | ❌ No          | `pdf`                |      |
+| File               | ❌ No          | `file`               |      |
+| Link               | ❌ No          | `text` (inline)      |      |
+| Page Link          | ❌ No          | `page`               |      |
+| External Page Link | ❌ No          | `text` (inline)      |      |
 
 Currently, not all block types are supported (❌ No). This project is in its early stages of development, and we plan to gradually support more block types through future updates.
 
