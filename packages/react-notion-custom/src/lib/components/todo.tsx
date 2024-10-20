@@ -3,7 +3,7 @@ import { TodoArgs } from "../types";
 import { getColorCss } from "../utils";
 import RichText from "./internal/rich-text";
 
-interface TodoProps extends TodoArgs {
+export interface TodoProps extends TodoArgs {
   children?: React.ReactNode;
 }
 
