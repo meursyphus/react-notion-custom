@@ -7,6 +7,7 @@ import Quote from "./quote";
 import Callout from "./callout";
 import BulletedListItem from "./bulleted-list-item";
 import Divider from "./divider";
+import Image from "./image";
 import Video from "./video";
 import Column from "./column";
 import ColumnList from "./column-list";
@@ -25,6 +26,7 @@ export {
   NumberedListItem,
   BulletedListItem,
   Divider,
+  Image,
   Video,
   Column,
   ColumnList,
@@ -45,6 +47,7 @@ export default {
   quote: Quote,
   callout: Callout,
   divider: Divider,
+  image: Image,
   video: Video,
   column: Column,
   column_list: ColumnList,
