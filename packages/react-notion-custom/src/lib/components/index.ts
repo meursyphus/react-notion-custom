@@ -8,6 +8,13 @@ import Callout from "./callout";
 import BulletedListItem from "./bulleted-list-item";
 import Divider from "./divider";
 import Image from "./image";
+import Video from "./video";
+import Column from "./column";
+import ColumnList from "./column-list";
+import Code from "./code";
+import Todo from "./todo";
+import Table from "./table";
+import TableRow from "./table-row";
 
 export {
   Headings,
@@ -20,6 +27,12 @@ export {
   BulletedListItem,
   Divider,
   Image,
+  Video,
+  Column,
+  ColumnList,
+  Code,
+  Todo,
+  Table,
 };
 
 export default {
@@ -35,4 +48,11 @@ export default {
   callout: Callout,
   divider: Divider,
   image: Image,
+  video: Video,
+  column: Column,
+  column_list: ColumnList,
+  code: Code,
+  to_do: Todo,
+  table: Table,
+  table_row: TableRow,
 };
