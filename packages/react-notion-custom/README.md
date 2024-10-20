@@ -1,50 +1,118 @@
-# React + TypeScript + Vite
+# React-Notion-Custom: Create Your Custom Blog with Notion
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[한국어 버전(Korean Version)](./README-KR.md)
 
-Currently, two official plugins are available:
+## 🚀 Build Your Own Website with Notion + React!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+With NotionPresso, you can combine Notion's powerful content management capabilities with React's flexible UI to create a fully customizable website or blog. Stop wasting time on complex CMS or database setups. Manage your content in Notion and create a stunning website with NotionPresso!
 
-## Expanding the ESLint configuration
+### This project consists of two core tools:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. **@notionpresso/cli**: Extracts content from Notion pages and converts it into JSON files.
+2. **@notionpresso/react**: Renders the extracted Notion content as React components.
 
-- Configure the top-level `parserOptions` property like this:
+## 🌟 Key Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+- **Uses Notion's Official API**: Always supports stable and latest features.
+- **Perfect Customization**: Modify and style all components as you wish.
+- **High-Quality Notion Components**: Provides components that look exactly like real Notion.
+- **Optimized Performance**: Quickly loads and renders even large Notion pages.
+- **Easy Content Management**: Manage content directly in Notion and reflect it on your website in real-time.
+
+## 🚀 Getting Started: Create Your Own Notion Blog
+
+### 1. Prepare Your Notion Page
+
+1. Create a new page in Notion and write your content.
+2. Set the page to public and copy the share link.
+
+### 2. Get Your Notion Page ID
+
+1. Go to your content page in Notion.
+2. Click the 'Share' button in the top right corner and enable the 'Share to web' option to make the page public.
+3. Copy the link. The URL will be in this format:
+   ```
+   https://www.notion.so/your-page-title-1234567890abcdef12345678
+   ```
+4. The last part of the URL (e.g., `1234567890abcdef12345678`) is your page ID.
+
+### 3. Get Your Notion Integration Token
+
+1. Go to the [Notion developer portal](https://www.notion.so/my-integrations).
+2. Click 'New integration' to create a new integration.
+3. Set the integration name and permissions, then click 'Submit'.
+4. Copy and save the **Internal Integration Token** that's generated.
+
+### 4. Extract Content with @notionpresso/cli
+
+```bash
+npx npresso --page-id YOUR_PAGE_ID --token YOUR_INTEGRATION_TOKEN
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 5. Set Up React Project
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
+```bash
+npm create vite@latest my-notion-blog -- --template react-ts
+cd my-notion-blog
+npm install @notionpresso/react
 ```
+
+### 6. Render Page with @notionpresso/react
+
+```jsx
+import { Notion } from "@notionpresso/react";
+import notionData from "./notion-data.json";
+
+function HomePage() {
+  return (
+    <Notion>
+      <Notion.Cover src={notionData.cover} />
+      <Notion.Body>
+        <Notion.Title title={notionData.title} />
+        <Notion.Blocks blocks={notionData.blocks} />
+      </Notion.Body>
+    </Notion>
+  );
+}
+
+export default HomePage;
+```
+
+### 7. Deploy
+
+Deploy your Next.js app to Vercel or Netlify and share your Notion blog with the world!
+
+## 📚 Detailed Usage
+
+For more detailed usage instructions and advanced customization options, please refer to [Incomplete].
+
+## 🛠 Installation
+
+```bash
+npm install @notionpresso/react @notionpresso/cli
+```
+
+## 🗺 Roadmap
+
+1. Expand support for various Notion block types
+2. Performance optimization including code splitting and data caching
+3. Integrate SEO optimization tools
+4. Enhance multilingual support
+
+For detailed development plans, please refer to [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## 🤝 Contributing
+
+React-Notion-Custom welcomes your contributions! Whether it's bug reports, feature suggestions, or code contributions, please feel free to participate in any form. For more details, please check [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## 📄 License
+
+This project is distributed under the MIT License. For more details, please refer to the [LICENSE](./LICENSE) file.
+
+## 📮 Contact
+
+If you have any questions or feedback, please create a [GitHub issue](https://github.com/notionpresso/react/issues) or contact us via [email](https://helper.notionpresso@gmail.com).
+
+---
+
+Create a fantastic website with your Notion content using React-Notion-Custom! 🎉

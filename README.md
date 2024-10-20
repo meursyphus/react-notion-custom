@@ -4,12 +4,12 @@
 
 ## 🚀 Build Your Own Website with Notion + React!
 
-With React-Notion-Custom, you can combine Notion's powerful content management capabilities with React's flexible UI to create a fully customizable website or blog. Stop wasting time on complex CMS or database setups. Manage your content in Notion and create a stunning website with React-Notion-Custom!
+With NotionPresso, you can combine Notion's powerful content management capabilities with React's flexible UI to create a fully customizable website or blog. Stop wasting time on complex CMS or database setups. Manage your content in Notion and create a stunning website with NotionPresso!
 
 ### This project consists of two core tools:
 
-1. **notion-dump**: Extracts content from Notion pages and converts it into JSON files.
-2. **react-notion-custom**: Renders the extracted Notion content as React components.
+1. **@notionpresso/cli**: Extracts content from Notion pages and converts it into JSON files.
+2. **@notionpresso/react**: Renders the extracted Notion content as React components.
 
 ## 🌟 Key Features
 
@@ -43,10 +43,10 @@ With React-Notion-Custom, you can combine Notion's powerful content management c
 3. Set the integration name and permissions, then click 'Submit'.
 4. Copy and save the **Internal Integration Token** that's generated.
 
-### 4. Extract Content with notion-dump
+### 4. Extract Content with @notionpresso/cli
 
 ```bash
-npx notion-dump --page-id YOUR_PAGE_ID --token YOUR_INTEGRATION_TOKEN
+npx npresso --page-id YOUR_PAGE_ID --token YOUR_INTEGRATION_TOKEN
 ```
 
 ### 5. Set Up React Project
@@ -54,13 +54,13 @@ npx notion-dump --page-id YOUR_PAGE_ID --token YOUR_INTEGRATION_TOKEN
 ```bash
 npm create vite@latest my-notion-blog -- --template react-ts
 cd my-notion-blog
-npm install react-notion-custom
+npm install @notionpresso/react
 ```
 
-### 6. Render Page with React-Notion-Custom
+### 6. Render Page with @notionpresso/react
 
 ```jsx
-import { Notion } from "react-notion-custom";
+import { Notion } from "@notionpresso/react";
 import notionData from "./notion-data.json";
 
 function HomePage() {
@@ -89,7 +89,7 @@ For more detailed usage instructions and advanced customization options, please 
 ## 🛠 Installation
 
 ```bash
-npm install react-notion-custom notion-dump
+npm install @notionpresso/react @notionpresso/cli
 ```
 
 ## 🗺 Roadmap
@@ -111,7 +111,7 @@ This project is distributed under the MIT License. For more details, please refe
 
 ## 📮 Contact
 
-If you have any questions or feedback, please create a [GitHub issue](https://github.com/your-repo/react-notion-custom/issues) or contact us via [email](tmdeoans@snu.ac.kr).
+If you have any questions or feedback, please create a [GitHub issue](https://github.com/notionpresso/react/issues) or contact us via [email](https://helper.notionpresso@gmail.com).
 
 ---
 
