@@ -26,7 +26,7 @@ export const useImageScale = () => {
   }, []);
 
   const handleScaleBlur = useCallback(() => {
-    const displayScaleValue = scaleRound(scaleRound(displayScale));
+    const displayScaleValue = scaleRound(displayScale);
     setIsScaleFocus(false);
     setScale(displayScaleValue / 100);
     setDisplayScale(displayScaleValue);
@@ -35,11 +35,19 @@ export const useImageScale = () => {
   const handleScaleEnter = useCallback(
     (event: React.KeyboardEvent) => {
       if (event.key === "Enter") {
-        const displayScaleValue = scaleRound(scaleRound(displayScale));
-        setIsScaleFocus(false);
+        setScaleOriginX(0.5);
+        setScaleOriginY(0.5);
+
+        let displayScaleValue = displayScale;
+
+        if (displayScale <= 50 || displayScale >= 200) {
+          displayScaleValue = scaleRound(displayScale);
+        }
+
         const newScale = displayScaleValue / 100;
         setScale(newScale);
         setDisplayScale(displayScaleValue);
+        setIsScaleFocus(false);
       }
     },
     [displayScale],
@@ -73,6 +81,12 @@ export const useImageScale = () => {
         return;
       }
 
+      if (scale === 1.5) {
+        setScale(1);
+        setDisplayScale(100);
+        return;
+      }
+
       const { width, height, top, left } =
         imageRef.current.getBoundingClientRect();
 
@@ -92,18 +106,28 @@ export const useImageScale = () => {
   );
 
   const handleScaleUp = useCallback(() => {
+    if (scale === 1) {
+      setScaleOriginX(0.5);
+      setScaleOriginY(0.5);
+    }
+
     setScale((previousScale) => Math.min(previousScale + 0.5, 2));
     setDisplayScale((previousDisplayScale) => {
       return Math.min(+previousDisplayScale + 50, 200);
     });
-  }, []);
+  }, [scale]);
 
   const handleScaleDown = useCallback(() => {
+    if (scale === 1) {
+      setScaleOriginX(0.5);
+      setScaleOriginY(0.5);
+    }
+
     setScale((previousScale) => Math.max(previousScale - 0.5, 0.5));
     setDisplayScale((previousDisplayScale) => {
       return Math.max(+previousDisplayScale - 50, 50);
     });
-  }, []);
+  }, [scale]);
 
   return {
     imageRef,

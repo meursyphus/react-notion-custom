@@ -19,7 +19,7 @@ const ImageViewerToolsToolTip: React.FC<ImageViewerToolsToolTipProps> = ({
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <motion.div
+    <div
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
       className="notion-image-viewer-tooltip-container"
@@ -45,7 +45,7 @@ const ImageViewerToolsToolTip: React.FC<ImageViewerToolsToolTipProps> = ({
           )}
         </AnimatePresence>
       )}
-    </motion.div>
+    </div>
   );
 };
 

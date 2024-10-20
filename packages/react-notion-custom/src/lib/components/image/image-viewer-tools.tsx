@@ -61,14 +61,14 @@ const ImageViewerTools: React.FC<ImageViewerToolsProps> = ({
           hint={`${currentImageIndex} of ${imageLength} `}
           disabled={!hasPrevious}
         >
-          <motion.button
+          <button
             aria-label="image tools back button"
             aria-disabled={!hasPrevious}
             disabled={!hasPrevious}
             onClick={toPreviousImage}
           >
             <img src={Icon.ArrowBack} alt="image tools back button" />
-          </motion.button>
+          </button>
         </Tooltip>
 
         <Tooltip
@@ -76,25 +76,22 @@ const ImageViewerTools: React.FC<ImageViewerToolsProps> = ({
           hint={`${currentImageIndex + 2} of ${imageLength} `}
           disabled={!hasNext}
         >
-          <motion.button
+          <button
             aria-label="image tools next button"
             aria-disabled={!hasNext}
             disabled={!hasNext}
             onClick={toNextImage}
           >
             <img src={Icon.ArrowForward} alt="image tools next button" />
-          </motion.button>
+          </button>
         </Tooltip>
       </div>
 
       <div className="notion-image-viewer-scaler">
         <Tooltip content="Zoom out" hint="-">
-          <motion.button
-            aria-label="image zoom out button"
-            onClick={onScaleDown}
-          >
+          <button aria-label="image zoom out button" onClick={onScaleDown}>
             <img src={Icon.Minus} alt="image zoom out button" />
-          </motion.button>
+          </button>
         </Tooltip>
 
         {isScaleFocus ? (
@@ -116,39 +113,36 @@ const ImageViewerTools: React.FC<ImageViewerToolsProps> = ({
             <span>%</span>
           </div>
         ) : (
-          <motion.button
+          <button
             className="notion-image-viewer-scaler-input-button"
             onClick={() => setIsScaleFocus(true)}
           >
             <span>{displayScale}%</span>
-          </motion.button>
+          </button>
         )}
         <Tooltip content="Zoom in" hint="+">
-          <motion.button
-            aria-label="image tools zoom in button"
-            onClick={onScaleUp}
-          >
+          <button aria-label="image tools zoom in button" onClick={onScaleUp}>
             <img src={Icon.Plus} alt="image tools zoom in button" />
-          </motion.button>
+          </button>
         </Tooltip>
       </div>
 
-      <motion.button
+      <button
         className="notion-image-viewer-tools-download"
         aria-label="image download button"
         onClick={() => handleDownload(url)}
       >
         <img src={Icon.Download} alt="image download" />
-      </motion.button>
+      </button>
 
       <Tooltip content="Close" hint="esc">
-        <motion.button
+        <button
           aria-label="image viewer close button"
           className="notion-image-viewer-tools-close"
           onClick={() => setIsOpened(false)}
         >
           <img src={Icon.Close} alt="image viewer close button" />
-        </motion.button>
+        </button>
       </Tooltip>
     </motion.nav>
   );

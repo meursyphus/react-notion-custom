@@ -51,7 +51,8 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     handleScaleDown,
   } = useImageScale();
 
-  const { isCursorVisible, handleMoveMouse } = useCursorVisibility();
+  const { isCursorVisible, handleMoveMouse } =
+    useCursorVisibility(isScaleFocus);
 
   useEffect(() => {
     if (currentImageIndex || isOpened) {
