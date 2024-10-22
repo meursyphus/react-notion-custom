@@ -230,7 +230,7 @@ function _load(Prism: any) {
     strike: {
       // ~~strike through~~
       // ~strike~
-      pattern: createInline(/(~~?)(?:(?!~)<inner>)+\2/.source),
+      pattern: createInline(/(~~?)(?:(?!~)<inner>)+\1/.source),
       lookbehind: true,
       greedy: true,
       inside: {

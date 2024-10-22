@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Component from "../../lib/Notion";
 import json from "./todo.json";
-import { Todo, TodoArgs } from "react-notion-custom";
+import { Todo, TodoArgs } from "@notionpresso/react";
 
 const blocks = json.blocks as any;
 
