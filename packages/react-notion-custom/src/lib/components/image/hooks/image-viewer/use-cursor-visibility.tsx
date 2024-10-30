@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 
-export const useCursorVisibility = (isScaleFocus: boolean) => {
+export const useCursorVisibility = () => {
   const [isCursorVisible, setIsisCursorVisible] = useState(true);
   const cursorTimeOutRef = useRef<NodeJS.Timeout>();
 
@@ -13,12 +13,10 @@ export const useCursorVisibility = (isScaleFocus: boolean) => {
       clearTimeout(cursorTimeOutRef.current);
     }
 
-    if (!isScaleFocus) {
-      cursorTimeOutRef.current = setTimeout(() => {
-        setIsisCursorVisible(false);
-      }, 2000);
-    }
-  }, [isScaleFocus]);
+    cursorTimeOutRef.current = setTimeout(() => {
+      setIsisCursorVisible(false);
+    }, 2000);
+  }, []);
 
   return {
     isCursorVisible,

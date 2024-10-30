@@ -51,8 +51,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     handleScaleDown,
   } = useImageScale();
 
-  const { isCursorVisible, handleMoveMouse } =
-    useCursorVisibility(isScaleFocus);
+  const { isCursorVisible, handleMoveMouse } = useCursorVisibility();
 
   useEffect(() => {
     if (currentImageIndex || isOpened) {
@@ -149,29 +148,29 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
               onClick={handleZoomInOut}
             />
 
-            {/* {isCursorVisible && ( */}
-            <ImageViewerTools
-              url={urls[currentImageIndex]}
-              currentImageIndex={currentImageIndex}
-              imageLength={urls.length}
-              scaleInputRef={scaleInputRef}
-              scale={scale}
-              displayScale={displayScale}
-              setIsOpened={setIsOpened}
-              onScaleUp={handleScaleUp}
-              onScaleDown={handleScaleDown}
-              isScaleFocus={isScaleFocus}
-              setIsScaleFocus={setIsScaleFocus}
-              onScaleBlur={handleScaleBlur}
-              onScaleFocus={handleScaleFocus}
-              onScaleEnter={handleScaleEnter}
-              onScaleChange={handleScaleChange}
-              hasPrevious={hasPrevious}
-              hasNext={hasNext}
-              toPreviousImage={toPreviousImage}
-              toNextImage={toNextImage}
-            />
-            {/* )} */}
+            {(isCursorVisible || isScaleFocus) && (
+              <ImageViewerTools
+                url={urls[currentImageIndex]}
+                currentImageIndex={currentImageIndex}
+                imageLength={urls.length}
+                scaleInputRef={scaleInputRef}
+                scale={scale}
+                displayScale={displayScale}
+                setIsOpened={setIsOpened}
+                onScaleUp={handleScaleUp}
+                onScaleDown={handleScaleDown}
+                isScaleFocus={isScaleFocus}
+                setIsScaleFocus={setIsScaleFocus}
+                onScaleBlur={handleScaleBlur}
+                onScaleFocus={handleScaleFocus}
+                onScaleEnter={handleScaleEnter}
+                onScaleChange={handleScaleChange}
+                hasPrevious={hasPrevious}
+                hasNext={hasNext}
+                toPreviousImage={toPreviousImage}
+                toNextImage={toNextImage}
+              />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
