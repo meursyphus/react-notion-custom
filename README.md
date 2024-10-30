@@ -1,4 +1,4 @@
-# React-Notion-Custom: Create Your Custom Blog with Notion
+# NotionPresso: Create Your Custom Blog with Notion
 
 [한국어 버전(Korean Version)](./README-KR.md)
 
@@ -103,7 +103,7 @@ For detailed development plans, please refer to [CONTRIBUTING.md](./CONTRIBUTING
 
 ## 🤝 Contributing
 
-React-Notion-Custom welcomes your contributions! Whether it's bug reports, feature suggestions, or code contributions, please feel free to participate in any form. For more details, please check [CONTRIBUTING.md](./CONTRIBUTING.md).
+NotionPresso welcomes your contributions! Whether it's bug reports, feature suggestions, or code contributions, please feel free to participate in any form. For more details, please check [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## 📄 License
 
@@ -115,4 +115,4 @@ If you have any questions or feedback, please create a [GitHub issue](https://gi
 
 ---
 
-Create a fantastic website with your Notion content using React-Notion-Custom! 🎉
+Create a fantastic website with your Notion content using NotionPresso! 🎉

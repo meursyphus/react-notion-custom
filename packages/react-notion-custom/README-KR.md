@@ -99,11 +99,11 @@ npm install @notionpresso/react @notionpresso/cli
 3. SEO 최적화 도구 통합
 4. 다국어 지원 강화
 
-자세한 개발 계획은 [CONTRIBUTING.md](./CONTRIBUTING.md)를 참조해 주세요.
+자세한 개발 계획은 [CONTRIBUTING-KR.md](./CONTRIBUTING-KR.md)를 참조해 주세요.
 
 ## 🤝 기여하기
 
-React-Notion-Custom은 여러분의 기여를 환영합니다! 버그 리포트, 기능 제안, 또는 코드 기여 등 어떤 형태로든 참여해 주세요. 자세한 내용은 [CONTRIBUTING.md](./CONTRIBUTING.md)를 확인해 주세요.
+NotionPresso은 여러분의 기여를 환영합니다! 버그 리포트, 기능 제안, 또는 코드 기여 등 어떤 형태로든 참여해 주세요. 자세한 내용은 [CONTRIBUTING-KR.md](./CONTRIBUTING-KR.md)를 확인해 주세요.
 
 ## 📄 라이선스
 
