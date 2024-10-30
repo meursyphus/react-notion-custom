@@ -63,10 +63,13 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
 
   useEffect(() => {
     if (!isOpened) {
+      document.body.style.overflow = "visible";
       return;
     }
 
     imageRef.current?.focus();
+
+    document.body.style.overflow = "hidden";
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyDownEvents: { [key: string]: () => void } = {
@@ -120,7 +123,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
         {isOpened && (
           <motion.div
             role="dialog"
-            className={`notion-image-viewer-container ${isCursorVisible ? "notion-visible-cursor" : "notion-hide-cursor"}`}
+            className={`notion-image-viewer-container`}
             aria-modal="true"
             onMouseMove={handleMoveMouse}
             initial={{ opacity: 0 }}
@@ -135,40 +138,40 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
             <motion.img
               key={urls[currentImageIndex]}
               ref={imageRef}
-              className={`notion-image-viewer-container-image ${isCursorVisible ? "notion-visible-cursor" : "notion-hide-cursor"}`}
+              className={`notion-image-viewer-container-image`}
               src={urls[currentImageIndex]}
               alt="posting image"
               style={{
                 transform: `scale(${scale})`,
                 transformOrigin: `${scaleOriginX * 100}% ${scaleOriginY * 100}%`,
-                cursor: getCursorStyle(scale),
+                cursor: isCursorVisible ? getCursorStyle(scale) : "none",
               }}
               onClick={handleZoomInOut}
             />
 
-            {isCursorVisible && (
-              <ImageViewerTools
-                url={urls[currentImageIndex]}
-                currentImageIndex={currentImageIndex}
-                imageLength={urls.length}
-                scaleInputRef={scaleInputRef}
-                scale={scale}
-                displayScale={displayScale}
-                setIsOpened={setIsOpened}
-                onScaleUp={handleScaleUp}
-                onScaleDown={handleScaleDown}
-                isScaleFocus={isScaleFocus}
-                setIsScaleFocus={setIsScaleFocus}
-                onScaleBlur={handleScaleBlur}
-                onScaleFocus={handleScaleFocus}
-                onScaleEnter={handleScaleEnter}
-                onScaleChange={handleScaleChange}
-                hasPrevious={hasPrevious}
-                hasNext={hasNext}
-                toPreviousImage={toPreviousImage}
-                toNextImage={toNextImage}
-              />
-            )}
+            {/* {isCursorVisible && ( */}
+            <ImageViewerTools
+              url={urls[currentImageIndex]}
+              currentImageIndex={currentImageIndex}
+              imageLength={urls.length}
+              scaleInputRef={scaleInputRef}
+              scale={scale}
+              displayScale={displayScale}
+              setIsOpened={setIsOpened}
+              onScaleUp={handleScaleUp}
+              onScaleDown={handleScaleDown}
+              isScaleFocus={isScaleFocus}
+              setIsScaleFocus={setIsScaleFocus}
+              onScaleBlur={handleScaleBlur}
+              onScaleFocus={handleScaleFocus}
+              onScaleEnter={handleScaleEnter}
+              onScaleChange={handleScaleChange}
+              hasPrevious={hasPrevious}
+              hasNext={hasNext}
+              toPreviousImage={toPreviousImage}
+              toNextImage={toNextImage}
+            />
+            {/* )} */}
           </motion.div>
         )}
       </AnimatePresence>
