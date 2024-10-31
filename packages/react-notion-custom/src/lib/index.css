@@ -1027,7 +1027,7 @@
 }
 
 /* image */
-.notion-image img {
+.notion-viewer-opener > img {
   width: 100%;
   object-fit: contain;
   pointer-events: auto;
@@ -1045,13 +1045,6 @@
 .notion-image-content {
   display: flex;
   flex-direction: column;
-}
-
-.notion-image img {
-  width: 100%;
-  object-fit: contain;
-  pointer-events: auto;
-  cursor: default;
 }
 
 .notion-image:not(:last-child) {
@@ -1226,6 +1219,8 @@
   padding-top: 32px;
   padding-bottom: 32px;
   flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 }
 
 @media screen and (min-width: 768px) {
@@ -1241,7 +1236,7 @@
   background-color: black;
   opacity: 0.9;
   cursor: default;
-  overscroll-behavior: none;
+  overscroll-behavior: contain;
   overflow: hidden;
 }
 
@@ -1289,6 +1284,11 @@
   margin-left: 5px;
   color: #d3d3d3;
   font-size: 13px;
+}
+
+.notion-scroll-block {
+  overflow: hidden;
+  margin-right: 15px;
 }
 
 button {

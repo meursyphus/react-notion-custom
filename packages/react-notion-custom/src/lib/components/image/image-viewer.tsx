@@ -61,14 +61,23 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
   }, [isOpened, currentImageIndex, setScale, setDisplayScale]);
 
   useEffect(() => {
+    const notion = document.querySelector(".notion") as HTMLElement;
+
+    notion.style.marginRight = "0px";
+    document.body.style.overflow = "visible";
+
+    if (isOpened) {
+      document.body.style.overflow = "hidden";
+      notion.style.marginRight = "15px";
+    }
+  }, [isOpened]);
+
+  useEffect(() => {
     if (!isOpened) {
-      document.body.style.overflow = "visible";
       return;
     }
 
     imageRef.current?.focus();
-
-    document.body.style.overflow = "hidden";
 
     const handleKeyDown = (e: KeyboardEvent) => {
       const keyDownEvents: { [key: string]: () => void } = {
