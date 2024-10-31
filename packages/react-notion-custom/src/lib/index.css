@@ -1171,14 +1171,18 @@
   width: 28px;
 }
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+.notion-image-viewer-tools
+  .notion-image-viewer-scaler
+  input::-webkit-outer-spin-button,
+.notion-image-viewer-tools
+  .notion-image-viewer-scaler
+  input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
 }
 /* Firefox */
-input[type="number"] {
+.notion-image-viewer-tools .notion-image-viewer-scaler input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
