@@ -133,6 +133,9 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
             <button
               className="notion-image-viewer-overlay"
               onClick={() => setIsOpened(false)}
+              style={{
+                cursor: isCursorVisible ? "default" : "none",
+              }}
             />
             <motion.img
               key={urls[currentImageIndex]}
