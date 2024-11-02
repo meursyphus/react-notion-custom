@@ -1,4 +1,4 @@
-import { Notion, type Block } from "@notionpresso/react";
+import { Notion, type Block } from "../../../core/src/lib";
 
 export default function StoryComponent({
   blocks,
