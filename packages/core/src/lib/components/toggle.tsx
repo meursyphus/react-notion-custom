@@ -9,7 +9,10 @@ type ToggleProps = {
   children?: React.ReactNode;
 } & ToggleArgs;
 
-const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
+const Toggle: React.FC<ToggleProps> & { Button: typeof ToggleButton } = ({
+  children,
+  ...props
+}) => {
   const {
     toggle: { color, rich_text: texts },
   } = props;
@@ -18,6 +21,25 @@ const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
 
   const toggleOpen = useCallback(() => setOpen((prevOpen) => !prevOpen), []);
 
+  console.log("props.blocks", props.blocks);
+
+  let buttonElement: React.ReactNode = null;
+  const otherChildren: React.ReactNode[] = [];
+
+  console.log("children", children);
+  React.Children.forEach(children, (child) => {
+    if (React.isValidElement(child) && child.type === Toggle.Button) {
+      buttonElement = child.props.children;
+    } else {
+      otherChildren.push(child);
+      console.log("child", child);
+    }
+  });
+
+  if (!buttonElement) {
+    buttonElement = <DefaultButton open={open} />;
+  }
+
   return (
     <div
       className={`notion-block notion-toggle  ${getColorCss(color)} ${open ? "notion-toggle-open" : ""}`}
@@ -25,18 +47,34 @@ const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
     >
       <div className="notion-toggle-content">
         <button onClick={toggleOpen} className="notion-toggle-button">
-          <div
-            className={`notion-toggle-button-arrow ${open ? "notion-toggle-button-arrow-opened" : ""}`}
-          />
+          {buttonElement}
         </button>
         <p>
           <RichText props={texts} />
         </p>
       </div>
 
-      {children}
+      {otherChildren}
     </div>
   );
 };
+
+type DefaultButtonProps = {
+  open: boolean;
+};
+
+const DefaultButton: React.FC<DefaultButtonProps> = ({ open }) => {
+  return (
+    <div
+      className={`notion-toggle-button-arrow ${open ? "notion-toggle-button-arrow-opened" : ""}`}
+    />
+  );
+};
+
+const ToggleButton: React.FC<{ children?: React.ReactNode }> = ({
+  children,
+}) => <>{children}</>;
+
+Toggle.Button = ToggleButton;
 
 export default Toggle;
