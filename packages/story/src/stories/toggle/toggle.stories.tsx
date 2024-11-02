@@ -29,8 +29,9 @@ type ToggleProps = ToggleArgs & {
 
 const CustomToggle = (props: ToggleProps) => {
   return (
-    <Toggle {...props}>
-      <Toggle.Button>
+    <Toggle
+      {...props}
+      customElement={
         <div
           style={{
             width: "10px",
@@ -39,8 +40,8 @@ const CustomToggle = (props: ToggleProps) => {
             backgroundColor: "orange",
           }}
         />
-      </Toggle.Button>
-    </Toggle>
+      }
+    />
   );
 };
 

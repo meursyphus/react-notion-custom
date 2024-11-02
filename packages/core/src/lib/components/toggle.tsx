@@ -9,7 +9,8 @@ type ToggleProps = {
   children?: React.ReactNode;
 } & ToggleArgs;
 
-const Toggle: React.FC<ToggleProps> & { Button: typeof ToggleButton } = ({
+const Toggle: React.FC<ToggleProps> = ({
+  customElement,
   children,
   ...props
 }) => {
@@ -21,23 +22,10 @@ const Toggle: React.FC<ToggleProps> & { Button: typeof ToggleButton } = ({
 
   const toggleOpen = useCallback(() => setOpen((prevOpen) => !prevOpen), []);
 
-  console.log("props.blocks", props.blocks);
+  let buttonElement: React.ReactNode = customElement;
 
-  let buttonElement: React.ReactNode = null;
-  const otherChildren: React.ReactNode[] = [];
-
-  console.log("children", children);
-  React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child) && child.type === Toggle.Button) {
-      buttonElement = child.props.children;
-    } else {
-      otherChildren.push(child);
-      console.log("child", child);
-    }
-  });
-
-  if (!buttonElement) {
-    buttonElement = <DefaultButton open={open} />;
+  if (!customElement) {
+    buttonElement = <DefaultToggleIcon />;
   }
 
   return (
@@ -46,35 +34,25 @@ const Toggle: React.FC<ToggleProps> & { Button: typeof ToggleButton } = ({
       aria-expanded={open}
     >
       <div className="notion-toggle-content">
-        <button onClick={toggleOpen} className="notion-toggle-button">
-          {buttonElement}
+        <button onClick={toggleOpen} className={`notion-toggle-button`}>
+          <div
+            className={`${open ? "notion-toggle-button-opened" : "notion-toggle-button-closed"}`}
+          >
+            {buttonElement}
+          </div>
         </button>
         <p>
           <RichText props={texts} />
         </p>
       </div>
 
-      {otherChildren}
+      {children}
     </div>
   );
 };
 
-type DefaultButtonProps = {
-  open: boolean;
+const DefaultToggleIcon: React.FC = () => {
+  return <div className="notion-toggle-button-arrow" />;
 };
-
-const DefaultButton: React.FC<DefaultButtonProps> = ({ open }) => {
-  return (
-    <div
-      className={`notion-toggle-button-arrow ${open ? "notion-toggle-button-arrow-opened" : ""}`}
-    />
-  );
-};
-
-const ToggleButton: React.FC<{ children?: React.ReactNode }> = ({
-  children,
-}) => <>{children}</>;
-
-Toggle.Button = ToggleButton;
 
 export default Toggle;

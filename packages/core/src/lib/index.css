@@ -89,22 +89,22 @@
   background-color: var(--fg-color-0);
 }
 
+.notion-toggle-button-opened {
+  transform: rotate(90deg);
+  transition: 0.2s all;
+}
+
+.notion-toggle-button-closed {
+  transform: rotate(0deg);
+  transition: 0.2s all;
+}
+
 .notion-toggle-button-arrow {
   height: 0;
   border: 6px solid transparent;
   border-left-color: black;
   border-left-width: 8px;
   margin-left: 6px;
-}
-
-.notion-toggle-button-arrow.notion-toggle-button-arrow-opened {
-  margin-left: 0px;
-  border-left-color: transparent;
-  border-left-width: 6px;
-
-  margin-top: 6px;
-  border-top-color: black;
-  border-top-width: 8px;
 }
 
 .notion-toggle-title {
