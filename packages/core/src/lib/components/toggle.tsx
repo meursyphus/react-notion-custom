@@ -9,7 +9,11 @@ type ToggleProps = {
   children?: React.ReactNode;
 } & ToggleArgs;
 
-const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
+const Toggle: React.FC<ToggleProps> = ({
+  customElement,
+  children,
+  ...props
+}) => {
   const {
     toggle: { color, rich_text: texts },
   } = props;
@@ -18,16 +22,24 @@ const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
 
   const toggleOpen = useCallback(() => setOpen((prevOpen) => !prevOpen), []);
 
+  let buttonElement: React.ReactNode = customElement;
+
+  if (!customElement) {
+    buttonElement = <DefaultToggleIcon />;
+  }
+
   return (
     <div
       className={`notion-block notion-toggle  ${getColorCss(color)} ${open ? "notion-toggle-open" : ""}`}
       aria-expanded={open}
     >
       <div className="notion-toggle-content">
-        <button onClick={toggleOpen} className="notion-toggle-button">
+        <button onClick={toggleOpen} className={`notion-toggle-button`}>
           <div
-            className={`notion-toggle-button-arrow ${open ? "notion-toggle-button-arrow-opened" : ""}`}
-          />
+            className={`${open ? "notion-toggle-button-opened" : "notion-toggle-button-closed"}`}
+          >
+            {buttonElement}
+          </div>
         </button>
         <p>
           <RichText props={texts} />
@@ -37,6 +49,10 @@ const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
       {children}
     </div>
   );
+};
+
+const DefaultToggleIcon: React.FC = () => {
+  return <div className="notion-toggle-button-arrow" />;
 };
 
 export default Toggle;
