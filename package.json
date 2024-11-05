@@ -5,13 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:build": "npm run build --workspace=docs",
-    "docs:dev": "npm run dev --workspace=docs",
-    "cli:build": "npm run build --workspace=notion-dump",
-    "cli:test": "npm run test --workspace=notion-dump",
     "story:build": "npm run build-storybook --workspace=story",
     "story:start": "npm run storybook --workspace=story",
     "library:build": "npm run build --workspace=@notionpresso/react",
+    "start": "npm run story:start",
+    "build": "npm run library:build",
     "prepare": "husky install",
     "format": "prettier --write ."
   },
