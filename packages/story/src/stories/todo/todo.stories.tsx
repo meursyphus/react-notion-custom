@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Component from "../../lib/Notion";
 import json from "./todo.json";
-import { Todo } from "../../../../core/src/lib";
-import { TodoArgs } from "../../../../core/src/lib";
+import { Todo } from "@notionpresso/react";
+import { TodoArgs } from "@notionpresso/react";
 
 const blocks = json.blocks as any;
 
@@ -26,7 +26,7 @@ type TodoProps = TodoArgs & {
   children?: React.ReactNode;
 };
 
-const CustomTodo = (props: TodoProps) => {
+const CustomTodo = ({ children, ...props }: TodoProps) => {
   return (
     <Todo {...props}>
       <Todo.CheckBox>
@@ -49,6 +49,7 @@ const CustomTodo = (props: TodoProps) => {
           type="checkbox"
         />
       </Todo.CheckBox>
+      {children}
     </Todo>
   );
 };

@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 import Component from "../../lib/Notion";
 import json from "./toggle.json";
 
-import { Toggle } from "../../../../core/src/lib";
-import type { ToggleArgs } from "../../../../core/src/lib";
+import { Toggle } from "@notionpresso/react";
+import type { ToggleArgs } from "@notionpresso/react";
 
 const blocks = json.blocks as any;
 
@@ -27,11 +27,10 @@ type ToggleProps = ToggleArgs & {
   children?: React.ReactNode;
 };
 
-const CustomToggle = (props: ToggleProps) => {
+const CustomToggle = ({ children, ...props }: ToggleProps) => {
   return (
-    <Toggle
-      {...props}
-      customElement={
+    <Toggle {...props}>
+      <Toggle.Icon>
         <div
           style={{
             width: "10px",
@@ -40,8 +39,9 @@ const CustomToggle = (props: ToggleProps) => {
             backgroundColor: "orange",
           }}
         />
-      }
-    />
+      </Toggle.Icon>
+      {children}
+    </Toggle>
   );
 };
 

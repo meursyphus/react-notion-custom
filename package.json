@@ -11,7 +11,7 @@
     "cli:test": "npm run test --workspace=notion-dump",
     "story:build": "npm run build-storybook --workspace=story",
     "story:start": "npm run storybook --workspace=story",
-    "library:build": "npm run build --workspace=react-notion-custom",
+    "library:build": "npm run build --workspace=@notionpresso/react",
     "prepare": "husky install",
     "format": "prettier --write ."
   },

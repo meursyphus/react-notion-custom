@@ -9,8 +9,7 @@ type ToggleProps = {
   children?: React.ReactNode;
 } & ToggleArgs;
 
-const Toggle: React.FC<ToggleProps> = ({
-  customElement,
+const Toggle: React.FC<ToggleProps> & { Icon: typeof ToggleIcon } = ({
   children,
   ...props
 }) => {
@@ -22,10 +21,19 @@ const Toggle: React.FC<ToggleProps> = ({
 
   const toggleOpen = useCallback(() => setOpen((prevOpen) => !prevOpen), []);
 
-  let buttonElement: React.ReactNode = customElement;
+  let iconElement: React.ReactNode = null;
+  const otherChildren: React.ReactNode[] = [];
 
-  if (!customElement) {
-    buttonElement = <DefaultToggleIcon />;
+  React.Children.forEach(children, (child) => {
+    if (React.isValidElement(child) && child.type === Toggle.Icon) {
+      iconElement = child.props.children;
+    } else {
+      otherChildren.push(child);
+    }
+  });
+
+  if (!iconElement) {
+    iconElement = <div className="notion-toggle-button-arrow" />;
   }
 
   return (
@@ -38,7 +46,7 @@ const Toggle: React.FC<ToggleProps> = ({
           <div
             className={`${open ? "notion-toggle-button-opened" : "notion-toggle-button-closed"}`}
           >
-            {buttonElement}
+            {iconElement}
           </div>
         </button>
         <p>
@@ -46,13 +54,15 @@ const Toggle: React.FC<ToggleProps> = ({
         </p>
       </div>
 
-      {children}
+      {otherChildren}
     </div>
   );
 };
 
-const DefaultToggleIcon: React.FC = () => {
-  return <div className="notion-toggle-button-arrow" />;
-};
+const ToggleIcon: React.FC<{ children?: React.ReactNode }> = ({ children }) => (
+  <>{children}</>
+);
+
+Toggle.Icon = ToggleIcon;
 
 export default Toggle;
