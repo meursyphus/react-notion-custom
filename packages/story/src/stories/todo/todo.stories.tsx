@@ -46,6 +46,7 @@ const CustomTodo = ({ children, ...props }: TodoProps) => {
             border: "1px solid black",
           }}
           checked={props.to_do.checked}
+          readOnly={true}
           type="checkbox"
         />
       </Todo.CheckBox>
