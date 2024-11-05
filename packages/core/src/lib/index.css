@@ -1060,6 +1060,25 @@
   flex-direction: column;
 }
 
+.notion-viewer-opener,
+.notion-image-viewer-overlay {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 .notion-image-viewer-tools button {
   background-color: #060606c4;
   padding: 6px;
@@ -1238,6 +1257,8 @@
   cursor: default;
   overscroll-behavior: contain;
   overflow: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 
 .notion-image-viewer-container-image {
@@ -1284,27 +1305,4 @@
   margin-left: 5px;
   color: #d3d3d3;
   font-size: 13px;
-}
-
-.notion-scroll-block {
-  overflow: hidden;
-  margin-right: 15px;
-}
-
-.notion-viewer-opener {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  width: auto;
-  height: auto;
-  overflow: visible;
-  text-align: left;
-  color: inherit;
-  font: inherit;
-  line-height: normal;
-  -webkit-font-smoothing: inherit;
-  -moz-osx-font-smoothing: inherit;
-  -webkit-appearance: none;
-  appearance: none;
 }
