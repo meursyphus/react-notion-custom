@@ -10,6 +10,7 @@ import {
 import { getCursorStyle } from "./lib";
 
 import ImageViewerTools from "./image-viewer-tools";
+import { getGapStyles, getGapWidth } from "./lib/get-gap";
 
 type ImageViewerProps = {
   children: React.ReactNode;
@@ -61,18 +62,6 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
   }, [isOpened, currentImageIndex, setScale, setDisplayScale]);
 
   useEffect(() => {
-    const notion = document.querySelector(".notion") as HTMLElement;
-
-    notion.style.marginRight = "0px";
-    document.body.style.overflow = "visible";
-
-    if (isOpened) {
-      document.body.style.overflow = "hidden";
-      notion.style.marginRight = "15px";
-    }
-  }, [isOpened]);
-
-  useEffect(() => {
     if (!isOpened) {
       return;
     }
@@ -116,6 +105,26 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     },
     [urls, setCurrentImageIndex, setIsOpened],
   );
+
+  useEffect(() => {
+    const styleElement = document.createElement("style");
+
+    if (isOpened) {
+      document.body.setAttribute("data-scroll-locked", "true");
+      const gap = getGapWidth();
+
+      const scrollLockedStyles = getGapStyles(gap);
+      styleElement.textContent = scrollLockedStyles;
+      document.head.appendChild(styleElement);
+    }
+
+    return () => {
+      document.body.removeAttribute("data-scroll-locked");
+      if (styleElement.parentNode) {
+        styleElement.parentNode.removeChild(styleElement);
+      }
+    };
+  }, [isOpened]);
 
   return (
     <>

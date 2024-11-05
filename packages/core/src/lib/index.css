@@ -1238,8 +1238,8 @@
   padding-top: 32px;
   padding-bottom: 32px;
   flex-direction: column;
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
 }
 
 @media screen and (min-width: 768px) {
@@ -1258,7 +1258,6 @@
   overscroll-behavior: contain;
   overflow: hidden;
   height: 100vh;
-  width: 100vw;
 }
 
 .notion-image-viewer-container-image {
