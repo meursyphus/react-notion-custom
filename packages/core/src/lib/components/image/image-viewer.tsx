@@ -5,12 +5,12 @@ import {
   useCursorVisibility,
   useImageNavigation,
   useImageScale,
+  usePreventScroll,
 } from "./hooks/image-viewer";
 
 import { getCursorStyle } from "./lib";
 
 import ImageViewerTools from "./image-viewer-tools";
-import { getGapStyles, getGapWidth } from "./lib/get-gap";
 
 type ImageViewerProps = {
   children: React.ReactNode;
@@ -106,25 +106,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     [urls, setCurrentImageIndex, setIsOpened],
   );
 
-  useEffect(() => {
-    const styleElement = document.createElement("style");
-
-    if (isOpened) {
-      document.body.setAttribute("data-scroll-locked", "true");
-      const gap = getGapWidth();
-
-      const scrollLockedStyles = getGapStyles(gap);
-      styleElement.textContent = scrollLockedStyles;
-      document.head.appendChild(styleElement);
-    }
-
-    return () => {
-      document.body.removeAttribute("data-scroll-locked");
-      if (styleElement.parentNode) {
-        styleElement.parentNode.removeChild(styleElement);
-      }
-    };
-  }, [isOpened]);
+  usePreventScroll(isOpened);
 
   return (
     <>
