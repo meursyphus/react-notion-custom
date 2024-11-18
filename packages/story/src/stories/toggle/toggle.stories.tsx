@@ -4,6 +4,7 @@ import json from "./toggle.json";
 
 import { Toggle } from "@notionpresso/react";
 import type { ToggleArgs } from "@notionpresso/react";
+import { useState } from "react";
 
 const blocks = json.blocks as any;
 
@@ -28,17 +29,34 @@ type ToggleProps = ToggleArgs & {
 };
 
 const CustomToggle = ({ children, ...props }: ToggleProps) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleChangeOpen = (open: boolean) => {
+    setIsOpen(open);
+  };
+
   return (
-    <Toggle {...props}>
+    <Toggle {...props} onChangeOpen={handleChangeOpen}>
       <Toggle.Icon>
-        <div
-          style={{
-            width: "10px",
-            height: "3px",
-            cursor: "pointer",
-            backgroundColor: "orange",
-          }}
-        />
+        {isOpen ? (
+          <div
+            style={{
+              width: "10px",
+              height: "3px",
+              cursor: "pointer",
+              backgroundColor: "orange",
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              width: "3px",
+              height: "10px",
+              cursor: "pointer",
+              backgroundColor: "orange",
+            }}
+          />
+        )}
       </Toggle.Icon>
       {children}
     </Toggle>

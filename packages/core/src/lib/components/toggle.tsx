@@ -7,10 +7,13 @@ import RichText from "./internal/rich-text";
 
 type ToggleProps = {
   children?: React.ReactNode;
+  isOpen?: boolean;
+  onChangeOpen?: (open: boolean) => void;
 } & ToggleArgs;
 
 const Toggle: React.FC<ToggleProps> & { Icon: typeof ToggleIcon } = ({
   children,
+  onChangeOpen,
   ...props
 }) => {
   const {
@@ -19,9 +22,7 @@ const Toggle: React.FC<ToggleProps> & { Icon: typeof ToggleIcon } = ({
 
   const [open, setOpen] = useState(false);
 
-  const toggleOpen = useCallback(() => setOpen((prevOpen) => !prevOpen), []);
-
-  let iconElement: React.ReactNode = null;
+  let iconElement: React.ReactNode = <DefaultToggleIcon open={open} />;
   const otherChildren: React.ReactNode[] = [];
 
   React.Children.forEach(children, (child) => {
@@ -32,9 +33,15 @@ const Toggle: React.FC<ToggleProps> & { Icon: typeof ToggleIcon } = ({
     }
   });
 
-  if (!iconElement) {
-    iconElement = <div className="notion-toggle-button-arrow" />;
-  }
+  const toggleOpen = useCallback(() => {
+    setOpen((prevOpen) => {
+      if (onChangeOpen) {
+        onChangeOpen(!prevOpen);
+      }
+
+      return !prevOpen;
+    });
+  }, [setOpen, onChangeOpen]);
 
   return (
     <div
@@ -43,18 +50,29 @@ const Toggle: React.FC<ToggleProps> & { Icon: typeof ToggleIcon } = ({
     >
       <div className="notion-toggle-content">
         <button onClick={toggleOpen} className={`notion-toggle-button`}>
-          <div
-            className={`${open ? "notion-toggle-button-opened" : "notion-toggle-button-closed"}`}
-          >
-            {iconElement}
-          </div>
+          {iconElement}
         </button>
+
         <p>
           <RichText props={texts} />
         </p>
       </div>
 
       {otherChildren}
+    </div>
+  );
+};
+
+type DefaultToggleIconProps = {
+  open: boolean;
+};
+
+const DefaultToggleIcon = ({ open }: DefaultToggleIconProps) => {
+  return (
+    <div
+      className={`${open ? "notion-toggle-button-opened" : "notion-toggle-button-closed"}`}
+    >
+      <div className="notion-toggle-button-arrow" />
     </div>
   );
 };
