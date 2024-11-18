@@ -1,10 +1,10 @@
-# React-Notion-Custom: Create Your Custom Blog with Notion
+# NotionPresso: Create Your Custom Blog with Notion
 
 [한국어 버전(Korean Version)](./README-KR.md)
 
-## 🚀 Build Your Own Website with Notion + React!
+## 🚀 Build Your Own Website with Notion + Next.js!
 
-With NotionPresso, you can combine Notion's powerful content management capabilities with React's flexible UI to create a fully customizable website or blog. Stop wasting time on complex CMS or database setups. Manage your content in Notion and create a stunning website with NotionPresso!
+With NotionPresso, you can combine Notion's powerful content management capabilities with Next.js's modern web features to create a fully customizable website or blog. Stop wasting time on complex CMS or database setups. Manage your content in Notion and create a stunning website with NotionPresso!
 
 ### This project consists of two core tools:
 
@@ -46,15 +46,16 @@ With NotionPresso, you can combine Notion's powerful content management capabili
 ### 4. Extract Content with @notionpresso/cli
 
 ```bash
-npx npresso --page-id YOUR_PAGE_ID --token YOUR_INTEGRATION_TOKEN
+npm install -g @notionpresso/cli
+npresso --page YOUR_PAGE_URL --auth YOUR_INTEGRATION_TOKEN
 ```
 
-### 5. Set Up React Project
+### 5. Set Up Next.js Project with Template
 
 ```bash
-npm create vite@latest my-notion-blog -- --template react-ts
-cd my-notion-blog
-npm install @notionpresso/react
+git clone https://github.com/notionpresso/nextjs-blog-template.git my-blog
+cd my-blog
+npm install
 ```
 
 ### 6. Render Page with @notionpresso/react
@@ -80,11 +81,11 @@ export default HomePage;
 
 ### 7. Deploy
 
-Deploy your Next.js app to Vercel or Netlify and share your Notion blog with the world!
+Deploy your Next.js app to Cloudflare Pages or Vercel and share your Notion blog with the world!
 
 ## 📚 Detailed Usage
 
-For more detailed usage instructions and advanced customization options, please refer to [Incomplete].
+For more detailed usage instructions and advanced customization options, please visit our [documentation](https://notionpresso.com).
 
 ## 🛠 Installation
 
@@ -103,7 +104,7 @@ For detailed development plans, please refer to [CONTRIBUTING.md](./CONTRIBUTING
 
 ## 🤝 Contributing
 
-React-Notion-Custom welcomes your contributions! Whether it's bug reports, feature suggestions, or code contributions, please feel free to participate in any form. For more details, please check [CONTRIBUTING.md](./CONTRIBUTING.md).
+NotionPresso welcomes your contributions! Whether it's bug reports, feature suggestions, or code contributions, please feel free to participate in any form. For more details, please check [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ## 📄 License
 
@@ -111,8 +112,8 @@ This project is distributed under the MIT License. For more details, please refe
 
 ## 📮 Contact
 
-If you have any questions or feedback, please create a [GitHub issue](https://github.com/notionpresso/react/issues) or contact us via [email](https://helper.notionpresso@gmail.com).
+If you have any questions or feedback, please create a [GitHub issue](https://github.com/notionpresso/react/issues) or contact us via [email](mailto:helper.notionpresso@gmail.com).
 
 ---
 
-Create a fantastic website with your Notion content using React-Notion-Custom! 🎉
+Create a fantastic website with your Notion content using NotionPresso! 🎉
