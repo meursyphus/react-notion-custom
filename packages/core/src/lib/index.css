@@ -83,28 +83,30 @@
   background: transparent;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .notion-toggle-button:hover {
   background-color: var(--fg-color-0);
 }
 
-.notion-toggle-button-opened {
-  transform: rotate(90deg);
+.notion-toggle-button-arrow-box {
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  position: relative;
   transition: 0.2s all;
 }
 
-.notion-toggle-button-closed {
-  transform: rotate(0deg);
-  transition: 0.2s all;
+.notion-toggle-button-arrow-box-opened {
+  transform: rotate(90deg);
 }
 
 .notion-toggle-button-arrow {
-  height: 0;
+  position: absolute;
   border: 6px solid transparent;
   border-left-color: black;
-  border-left-width: 8px;
-  margin-left: 6px;
+  border-left-width: 10px;
 }
 
 .notion-toggle-title {

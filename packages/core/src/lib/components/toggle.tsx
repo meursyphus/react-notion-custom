@@ -26,8 +26,10 @@ const Toggle: React.FC<ToggleProps> = ({ children, ...props }) => {
       <div className="notion-toggle-content">
         <button onClick={toggleOpen} className="notion-toggle-button">
           <div
-            className={`notion-toggle-button-arrow ${open ? "notion-toggle-button-arrow-opened" : ""}`}
-          />
+            className={`notion-toggle-button-arrow-box ${open ? "notion-toggle-button-arrow-box-opened" : ""}`}
+          >
+            <div className="notion-toggle-button-arrow"></div>
+          </div>
         </button>
         <p>
           <RichText props={texts} />
