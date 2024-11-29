@@ -5,6 +5,7 @@ import {
   useCursorVisibility,
   useImageNavigation,
   useImageScale,
+  usePreventScroll,
 } from "./hooks/image-viewer";
 
 import { getCursorStyle } from "./lib";
@@ -51,8 +52,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     handleScaleDown,
   } = useImageScale();
 
-  const { isCursorVisible, handleMoveMouse } =
-    useCursorVisibility(isScaleFocus);
+  const { isCursorVisible, handleMoveMouse } = useCursorVisibility();
 
   useEffect(() => {
     if (currentImageIndex || isOpened) {
@@ -106,6 +106,8 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
     [urls, setCurrentImageIndex, setIsOpened],
   );
 
+  usePreventScroll(isOpened);
+
   return (
     <>
       <button
@@ -120,7 +122,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
         {isOpened && (
           <motion.div
             role="dialog"
-            className={`notion-image-viewer-container ${isCursorVisible ? "notion-visible-cursor" : "notion-hide-cursor"}`}
+            className={`notion-image-viewer-container`}
             aria-modal="true"
             onMouseMove={handleMoveMouse}
             initial={{ opacity: 0 }}
@@ -131,22 +133,25 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
             <button
               className="notion-image-viewer-overlay"
               onClick={() => setIsOpened(false)}
+              style={{
+                cursor: isCursorVisible ? "default" : "none",
+              }}
             />
             <motion.img
               key={urls[currentImageIndex]}
               ref={imageRef}
-              className={`notion-image-viewer-container-image ${isCursorVisible ? "notion-visible-cursor" : "notion-hide-cursor"}`}
+              className={`notion-image-viewer-container-image`}
               src={urls[currentImageIndex]}
               alt="posting image"
               style={{
                 transform: `scale(${scale})`,
                 transformOrigin: `${scaleOriginX * 100}% ${scaleOriginY * 100}%`,
-                cursor: getCursorStyle(scale),
+                cursor: isCursorVisible ? getCursorStyle(scale) : "none",
               }}
               onClick={handleZoomInOut}
             />
 
-            {isCursorVisible && (
+            {(isCursorVisible || isScaleFocus) && (
               <ImageViewerTools
                 url={urls[currentImageIndex]}
                 currentImageIndex={currentImageIndex}
