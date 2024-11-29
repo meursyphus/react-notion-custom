@@ -101,7 +101,6 @@ export type TodoArgs = {
     checked: boolean;
     rich_text: TextArgs[];
   };
-  customElement?: React.ReactNode;
 } & ContextedBlock;
 
 export type ToggleArgs = {
@@ -110,7 +109,6 @@ export type ToggleArgs = {
     color: string;
     rich_text: TextArgs[];
   };
-  customElement?: React.ReactNode;
 } & ContextedBlock;
 
 export type QuoteArgs = {
